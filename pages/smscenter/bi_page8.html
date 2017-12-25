@@ -1,0 +1,182 @@
+
+    <aside class="right-side" ng-controller="page7Controller as showCase">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>运营报表<small>日活跃报表</small></h1>
+            <ol class="breadcrumb">
+                <li><a href="index.html"><i class="fa fa-dashboard"></i>首页</a></li>
+                <li class="active">活跃用户数</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <h3>8888个</h3>
+                            <p>活跃用户</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">
+                            More <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div><!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <!--<h3>53<sup style="font-size: 20px">%</sup></h3>-->
+                            <h3>6666位</h3>
+                            <p>7日活跃用户</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">
+                            More <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div><!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-yellow">
+                        <div class="inner">
+                            <h3>2000位</h3>
+                            <p>本月活跃用户</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">
+                            More <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div><!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <h3>10000个</h3>
+                            <p>活跃项目</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">
+                            More <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div><!-- ./col -->
+            </div><!-- /.row -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">DAU日报</h3>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="row">
+                                        <div class="col-md-12 col-lg-6">
+                                            <div class="form-group">
+                                                <label class="leftlabel tablabel">
+                                                    <span class="labeltitle">时间</span>
+                                                    <div class="buttab">
+                                                        <span value="1" class="btntab-btn tjsjitem active">今天</span>
+                                                        <span value="-1" class="btntab-btn tjsjitem">昨天</span>
+                                                        <span value="7" class="btntab-btn tjsjitem">最近7天</span>
+                                                        <span value="30" class="btntab-btn tjsjitem">最近30天</span>
+                                                    </div>
+                                                </label>
+
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </div>
+                                                    <input type="text" class="form-control pull-right" id="reservation9"/>
+                                                </div><!-- /.input group -->
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+
+                        <div class="box-body table-responsive relative">
+                            <form class="form-inline" ng-submit="showCase.addPerson()">
+                                <div class="table-t-r moneylist">
+                                    <button class="btn btn-dropbox pull-right add-btn" style="margin-top: 0;padding: 5px 20px;">导出</button>
+                                </div>
+                                <table datatable="ng" dt-options="showCase.dtOptions" dt-column-defs="showCase.dtColumnDefs"  class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>日期</th>
+                                        <th>用户数</th>
+                                        <th>当天活跃</th>
+                                        <th>1天后</th>
+                                        <th>2天后</th>
+                                        <th>3天后</th>
+                                        <th>7天后</th>
+                                        <th>30天后</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr ng-repeat="order in showCase.order">
+                                        <td>{{order.ddbh}}</td>
+                                        <td>{{order.dgcp}}</td>
+                                        <td>{{order.gmlx}}</td>
+                                        <td>{{order.ddrq}}</td>
+                                        <td>{{order.ddje}}</td>
+                                        <td>{{order.zfzt}}</td>
+                                        <td>{{order.zfsj}}</td>
+                                        <td>{{order.dgr}}</td>
+                                        <td>{{order.phone}}</td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div>
+            </div>
+
+            
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+
+    <script type="text/javascript">
+        $('#reservation9').daterangepicker({
+            "timePicker": false,
+            "timePicker24Hour": false,
+            "linkedCalendars": false,
+            "autoUpdateInput": false,
+        }, function(start, end) {
+            var time_start=start.format('YYYY/MM/DD');
+            var time_end=end.format('YYYY/MM/DD');
+            var time_label = time_start+' - '+time_end;
+            $('#reservation9').val(time_label);
+        })
+        //筛选数据
+        $(".btntab-btn").on("click",function(){
+            var searchval = $(this).attr("value");
+            alert(searchval);
+            $(this).addClass("active").siblings(".btntab-btn").removeClass("active");
+        });
+    </script>

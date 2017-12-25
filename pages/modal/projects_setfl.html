@@ -1,0 +1,50 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" 
+            aria-hidden="true">×
+    </button>
+    <h4 class="modal-title" id="myModalLabel">
+        设置关键词分类
+    </h4>
+</div>
+<div class="modal-body" style="margin-bottom: 30px;">
+    <h4>将选中的<em>15</em>项设为以下选中的分类？</h4>
+    <div class="m_top_20">
+        <div class="gjcfl_list">
+            <ul id="zdgjcfl">
+                <li>
+                    <input tabindex="1" type="checkbox" id="checkbox-1" name="zdgjc_list" checked value="品牌词">&nbsp;<label for="input-1">品牌词</label>
+                </li>
+                <li>
+                    <input tabindex="2" type="checkbox" id="checkbox-2" name="zdgjc_list" value="通用词">&nbsp;<label for="input-2">通用词</label>
+                </li>
+                <li>
+                    <input tabindex="3" type="checkbox" id="checkbox-3" name="zdgjc_list" value="竞品词">&nbsp;<label for="input-3">竞品词</label>
+                </li>
+                <li>
+                    <input tabindex="2" type="checkbox" id="checkbox-2" name="zdgjc_list" value="通用词">&nbsp;<label for="input-2">通用词</label>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+        
+<div class="modal-footer text-center">
+    <button type="button" class="btn_main btn_cancel" data-dismiss="modal">取消</button>
+    <button type="button" class="btn_main saveBtn" ng-click="projectsApp.appScope.save_addgjc($event)" onclick="aaa()">保存</button>    
+</div>
+        
+ <script>
+//多选单选按钮初始化
+    function icheckbox_addfl(){
+        var callbacks_list = $('.demo-callbacks ul');
+        $('.gjcfl_list input').on('ifCreated ifClicked ifChanged ifChecked ifUnchecked ifDisabled ifEnabled ifDestroyed',function(event){
+            callbacks_list.prepend('<li><span>#' + this.id + '</span> is ' + event.type.replace('if', '').toLowerCase() + '</li>');
+            //checkednumf();
+        }).iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%',
+        });
+    };
+    icheckbox_addfl();
+</script>

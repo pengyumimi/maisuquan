@@ -1,0 +1,292 @@
+
+<aside class="right-side" ng-controller="seoaddController">
+<link href="css/samecss.css" rel="stylesheet" type="text/css">
+<div class="seo_cont">
+
+	<div class="box-body table-responsive no-padding m_top_15" style="background-color:#F5F5F5;overflow:hidden">
+        <div class="m_top_30" style="overflow: hidden">
+            <h3 class="col-md-3 pull-left" style="margin:0">创建新项目</h3>
+            <div class="progressbox col-md-3 col-xs-3 pull-right" id="seoaddprogress">
+                <div class="progress minprogress">
+                    <div class="progress-bar progress-bar-main" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%">
+                    </div>
+                </div>
+                <span class="progresstxt">25%</span>
+            </div>
+        </div>
+        <div class="addxmtab_t col-md-12 m_top_15">
+            <ul class="tabtitle">
+                <li class="tabhover"><a href="javascript:void(0)">1基本信息</a></li>
+                <li><a href="javascript:void(0)">2频道信息</a></li>
+                <li><a href="javascript:void(0)">3关键词信息</a></li>
+                <li><a href="javascript:void(0)">4竞品信息</a></li>
+            </ul>
+        </div>
+
+	</div>
+	<div class="addxmcont col-md-12">
+	    <div class="tabcontent" style="display:block;">
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">项目名称</label>
+                        <input type="txt" class="form-control" id="xmmc" placeholder="例如，WebInsights或WebInsights项目">
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">项目地址</label>
+                        <input type="txt" class="form-control" id="xmdz" placeholder="例如，netconcepts.cn或www.netconcepts.cn">
+                    </div>
+                </div>
+            </div>
+            <p class="tiperror">请为你的项目添加一个名称</p>
+            <button class="btn_main" onclick="next_1(this)">下一步</button>
+	    </div>
+	    <div class="tabcontent pdcont">
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">频道名称</label>
+                        <input type="txt" class="form-control pdmc_inp" id="pdmc_inp_1" placeholder="例如，图书">
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">频道地址</label>
+                        <input type="txt" class="form-control pddz_inp" id="pddz_inp_1" placeholder="例如，book.dangdang.com">
+                    </div>
+                </div>
+            </div>
+            <div class="append_box"></div>
+            <p class="tiperror">请输入频道名称</p>
+            <div style="margin-bottom:35px;"><button class="addpd-btn"><i class="icon-wi-add"></i>新增频道</button></div>
+            <button class="btn_main" onclick="nextclick(0)">上一步</button>
+            <button class="btn_main" onclick="next_2(this)">下一步</button>
+        </div>
+        <div class="tabcontent">
+            <div class="gjc-btnbox row"><!--关键词容器-->
+                <div class="pull-left col-md-7 row">
+                    <button class="addpd-btn gjc-btnactive" ng-click="projects_addgjc()"><i class="icon-wi-add"></i>添加关键词</button>
+                    <button class="addpd-btn" ng-click="projects_delgjc()"><i class="icon-wi-del"></i>删除关键词</button>
+                    <button class="addpd-btn" ng-click="projects_setfl()"><i class="icon-wi-list"></i>设置分类</button>
+                    <button class="addpd-btn" ng-click="projects_setpd()"><i class="icon-wi-more"></i>设置频道</button>
+                    <button class="addpd-btn" ng-click="projects_glfl()"><i class="icon-wi-set"></i>管理分类</button>
+                </div>
+                <div class="pull-right col-md-5 row">
+                    <div class="col-md-4">
+                        <select class="form-control">
+                            <option>请选择分类</option>
+                            <option>活跃项目</option>
+                            <option>存档项目</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-control">
+                            <option>请选择所属频道</option>
+                            <option>活跃项目</option>
+                            <option>存档项目</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="addpd-btn" ng-click="projects_glfl($event)" href="pages/modal/projects_glfl.html" data-toggle="modal" data-target="#projects_glfl">筛选</button>
+                        <button class="addpd-btn" ng-click="projects_glfl($event)" href="pages/modal/projects_glfl.html" data-toggle="modal" data-target="#projects_glfl">导出</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row con-md-12">
+                <table id="keywordslist">
+                    <thead>
+                        <th><input type="checkbox" name="keywordcheckbox_all" data-checkall="keywords"/></th>
+                        <th>关键词（20/300）</th>
+                        <th>分类标签</th>
+                        <th>分类标签</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" name="keywordcheckbox" data-check="keywords"/></td>
+                            <td>当当读书客户端</td>
+                            <td><span class="flbq"><i class="icon-wi-error"></i>书籍类</span></td>
+                            <td><span class="swpd"><i class="icon-wi-error"></i>购物</span></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="keywordcheckbox" data-check="keywords"/></td>
+                            <td>当当网上书店</td>
+                            <td><span class="flbq"><i class="icon-wi-error"></i>书籍类</span></td>
+                            <td><span class="swpd"><i class="icon-wi-error"></i>购物</span></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="keywordcheckbox" data-check="keywords"/></td>
+                            <td>名人传记</td>
+                            <td><span class="flbq"><i class="icon-wi-error"></i>书籍类</span></td>
+                            <td><span class="swpd"><i class="icon-wi-error"></i>购物</span></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="keywordcheckbox" data-check="keywords"/></td>
+                            <td>网购衣服</td>
+                            <td><span class="flbq"><i class="icon-wi-error"></i>书籍类</span></td>
+                            <td><span class="swpd"><i class="icon-wi-error"></i>购物</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="m_top_30 row">
+                <button class="btn_main" onclick="nextclick(1)">上一步</button>
+                <button class="btn_main" onclick="next_3(this)">下一步</button>
+            </div>
+            <!--<script type="text/ng-template" id="projects_addgjc.html"></script>-->
+            <!--<div ng-controller="ModalDemoCtrl">-->
+                <!--&lt;!&ndash; 这里就是控制器的内容 ,然后直接在控制器里面插入modal的页面元素&ndash;&gt;-->
+                <!--<script type="text/ng-template" id="test2.html"></script>-->
+                <!--<button type="button" class="btn btn-default" ng-click="open()">Open me!</button>-->
+                <!--<button type="button" class="btn btn-default" ng-click="open('lg')">Large modal</button>-->
+                <!--<button type="button" class="btn btn-default" ng-click="open('sm')">Small modal</button>-->
+                <!--<button type="button" class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>-->
+                <!--<div ng-show="selected">Selection from a modal: {{ selected }}</div>-->
+            <!--</div>-->
+
+        </div>
+        <div class="tabcontent pdcont">
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">竞争对手名称</label>
+                        <input type="txt" class="form-control pdmc_inp" id="pdmc_inp_1" placeholder="例如，国美">
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">网址</label>
+                        <input type="txt" class="form-control pddz_inp" id="pddz_inp_1" placeholder="例如，book.dangdang.com">
+                    </div>
+                </div>
+            </div>
+            <div class="append_box"></div>
+            <p class="tiperror">请输入频道名称</p>
+            <div style="margin-bottom:35px;"><button class="addpd-btn"><i class="icon-wi-add"></i>新增频道</button></div>
+            <button class="btn_main" onclick="nextclick(2)">上一步</button>
+            <button class="btn_main" onclick="save(this)">保存</button>
+        </div>
+	</div>
+</div>
+</aside>
+<script>
+//tab切换不计数量只要对应就好
+    //nextclick(2);
+//	$('.tabtitle li').click(function () {
+//        var index = $(this).index();
+//        $(this).attr('class',"tabhover").siblings('li').attr('class','taba');
+//        $('.tabcontent').eq(index).show(100).siblings('.tabcontent').hide();
+//	});
+    //跳转项目
+    function nextclick(num) {
+        $('.tabtitle li:eq('+num+')').attr('class',"tabhover").siblings('li').attr('class','taba');
+        $('.tabcontent').eq(num).show(100).siblings('.tabcontent').hide();
+        switch (num){
+            case 0:
+                $("#seoaddprogress .minprogress .progress-bar-main").css("width","25%");//设置进度条
+                $(".progresstxt").text("25%");
+                break;
+            case 1:
+                $("#seoaddprogress .minprogress .progress-bar-main").css("width","50%");//设置进度条
+                $(".progresstxt").text("50%");
+                break;
+            case 2:
+                $("#seoaddprogress .minprogress .progress-bar-main").css("width","75%");//设置进度条
+                $(".progresstxt").text("75%");
+                break;
+            case 3:
+                $("#seoaddprogress .minprogress .progress-bar-main").css("width","100%");//设置进度条
+                $(".progresstxt").text("100%");
+                break;
+        };
+	};
+    //添加新频道信息
+    function addnewlist(){
+        var num = 2;
+        $(".addpd-btn").on("click",function(){
+            _html = '<div class="row"><div class="form-group col-md-3 form-group"><label for="">频道名称</label><input type="txt" class="form-control pdmc_inp" id="pdmc_inp_'+num+'" placeholder="例如，图书"></div><div class="form-group col-md-3 form-group"><label for="">频道地址</label><input type="txt" class="form-control pddz_inp" id="pddz_inp_'+num+'" placeholder="例如，book.dangdang.com"></div><div class="col-md-3 del_list" onclick="del_list(this)"><button class="delpd-btn"><i class="icon-wi-del"></i>删除此频道信息</button></div></div>';
+            $(this).parents(".tabcontent").children(".append_box").append(_html);
+            ++num;
+        });
+    };
+    addnewlist();
+    //删除频道信息
+    function del_list(obj){
+        $(obj).parents(".row").remove();
+    };
+    //基本信息下一步
+    function next_1(obj){
+        var xmmcval = $("#xmmc").val();
+        var xmdzval = $("#xmdz").val();
+        if(xmmcval && xmdzval){
+            $(obj).parents(".tabcontent").children(".tiperror").hide();//隐藏提示信息
+            nextclick(1);//跳转到第二项
+        }else{
+            $(obj).parents(".tabcontent").children(".tiperror").show();//显示提示信息
+        }
+    };
+    //频道信息下一步
+    function next_2(obj){
+        var flag = false;
+        $(".pdcont .row").each(function(){
+            var aval = $(this).find(".pdmc_inp").val();
+            var bval = $(this).find(".pddz_inp").val();
+            if( (aval.length > 0) && (bval.length > 0) ){
+                //alert("同时有值");
+                flag = true;
+            }else if( (aval == "") && (bval == "") ){
+                //alert("同时没有值");
+                flag = true;
+            }else{
+                //alert("一个没有值");
+                flag = false;
+            };
+            return flag;
+        });
+        //alert(flag);
+        if( flag == false ){
+            //alert("只有一个值");
+            $(obj).parents(".tabcontent").children(".tiperror").show();//显示提示信息
+        }else{
+            $(obj).parents(".tabcontent").children(".tiperror").hide();//隐藏提示信息
+            nextclick(2);//跳转到第三项
+        };
+    };
+    //关键词信息下一步
+    function next_3(obj){
+//        var pdmcval = $("#pdmc_inp_1").val();
+//        var pddzval = $("#pddz_inp_1").val();
+//        if(pdmcval && pddzval){
+//            $(obj).parents(".tabcontent").children(".tiperror").hide();//隐藏提示信息
+//            nextclick(3);//跳转到第四项
+//        }else{
+//            $(obj).parents(".tabcontent").children(".tiperror").show();//显示提示信息
+//        }
+        nextclick(3);//跳转到第三项
+    };
+
+    //多选单选按钮初始化
+    function icheckbox_addfl(){
+        $('input[name=keywordcheckbox],input[name=keywordcheckbox_all]').iCheck({
+            labelHover : false,
+            cursor : true,
+            checkboxClass : 'icheckbox_square-blue',
+            radioClass : 'iradio_square-blue',
+            increaseArea : '20%'
+        });
+//        var callbacks_list = $('.demo-callbacks ul');
+//        $('.glfl_list input').on('ifCreated ifClicked ifChanged ifChecked ifUnchecked ifDisabled ifEnabled ifDestroyed',function(event){
+//            callbacks_list.prepend('<li><span>#' + this.id + '</span> is ' + event.type.replace('if', '').toLowerCase() + '</li>');
+//            //checkednumf();
+//        }).iCheck({
+//            checkboxClass: 'icheckbox_square-blue',
+//            radioClass: 'iradio_square-blue',
+//            increaseArea: '20%',
+//        });
+    };
+    icheckbox_addfl();
+
+    checkall();//全选，全不选
+
+</script>

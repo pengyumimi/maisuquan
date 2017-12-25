@@ -1,0 +1,293 @@
+	<link href="css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>项目管理<small></small></h1>
+			<ol class="breadcrumb">
+				<li><a href="index.html"><i class="fa fa-dashboard"></i>首页</a></li>
+				<li class="active">SEO项目管理</li>
+			</ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+				
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">SEO项目统计</h3>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="leftlabel tablabel">
+                                                    <span class="labeltitle">项目添加时间</span>
+                                                    <div class="buttab">
+                                                        <span value="7" class="btntab-btn tjsjitem active">近7天</span>
+                                                        <span value="30" class="btntab-btn tjsjitem">近30天</span>
+                                                    </div>
+                                                </label>
+
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </div>
+                                                    <input type="text" class="form-control pull-right" id="reservation9"/>
+                                                </div><!-- /.input group -->
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="leftlabel tablabel">
+                                                    <span class="labeltitle">项目属性</span>
+                                                    <div class="buttab">
+                                                        <span value="1" class="btntab-btn xmsxitem active">全部</span>
+                                                        <span value="2" class="btntab-btn xmsxitem">活跃</span>
+                                                        <span value="3" class="btntab-btn xmsxitem">存档</span>
+                                                        <span value="4" class="btntab-btn xmsxitem">已删除</span>
+                                                    </div>
+                                                </label>
+
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-xs-8">
+                                            <div class="form-group">
+                                                <label class="leftlabel" style="width:5.5em">套餐类型</label>
+                                                <div class="input-group">
+                                                    <select class="form-control">
+                                                        <option>全部</option>
+                                                        <option>SEO系统服务 个人版</option>
+                                                        <option>SEO系统服务 标准版</option>
+                                                        <option>SEO系统服务 企业版</option>
+                                                        <option>SEO系统服务 专业版</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <button class="pull-right btn btn-info btn-sm">查询</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer" id="chart_1" style="width:100%;height:400px;"></div><!-- /.box-footer -->
+                        <div class="box-body table-responsive">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>项目名称</th>
+                                        <th>项目属性</th>
+                                        <th>项目添加时间</th>
+                                        <th>关键词数量</th>
+                                        <th>竞品数量</th>
+                                        <th>频道数量</th>
+                                        <th>子频道数量</th>
+                                        <th>项目添加人</th>
+                                        <th>套餐类型</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>当当网</td>
+                                        <td>活跃</td>
+                                        <td>2016-3-25 17：21：08</td>
+                                        <td>102</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>2</td>
+                                        <td>张三</td>
+                                        <td>SEO系统服务 企业版</td>
+                                        <td><button class="btn btn-primary btn-mini" ui-sref="seoaddxm">编辑</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>携程网</td>
+                                        <td>存档</td>
+                                        <td>2016-3-25 17：21：08</td>
+                                        <td>102</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>2</td>
+                                        <td>张三</td>
+                                        <td>SEO系统服务 标准版</td>
+                                        <td><button class="btn btn-primary btn-mini" id="ktzhmodel_1" ng-click="edithy($event)" data-toggle="modal" data-target="#edithy" href="pages/modal/bi_edithy.html">编辑</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>京东商城</td>
+                                        <td>已删除</td>
+                                        <td>2016-3-25 17：21：08</td>
+                                        <td>102</td>
+                                        <td>4</td>
+                                        <td>2</td>
+                                        <td>0</td>
+                                        <td>李四</td>
+                                        <td>SEO系统服务 个人版</td>
+                                        <td><button class="btn btn-primary btn-mini" id="ktzhmodel_1" ng-click="edithy($event)" data-toggle="modal" data-target="#edithy" href="pages/modal/bi_edithy.html">编辑</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>IBM中国</td>
+                                        <td>存档</td>
+                                        <td>2016-3-25 17：21：08</td>
+                                        <td>102</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>2</td>
+                                        <td>张三</td>
+                                        <td>SEO系统服务 标准版</td>
+                                        <td><button class="btn btn-primary btn-mini" id="ktzhmodel_1" ng-click="edithy($event)" data-toggle="modal" data-target="#edithy" href="pages/modal/bi_edithy.html">编辑</button></td>
+                                    </tr>
+                                    
+                                    
+<!--
+                                    <tr ng-repeat="student in students">
+                                        <td>{{student.id}}</td>
+                                        <td>{{student.name}}</td>
+                                        <td>{{student.email}}</td>
+                                        <td>{{student.mobile}}</td>
+                                        <td>{{student.username}}</td>
+                                        <td>{{student.create_time}}</td>
+                                        <td><button class="btn btn-primary btn-mini">开通账号</button>&nbsp;&nbsp;<button class="btn btn-danger btn-mini">删除</button></td>
+                                    </tr>
+-->
+
+                                </tbody>
+    <!--
+                                <tfoot>
+                                    <tr>
+                                        <th>Rendering engine</th>
+                                        <th>Browser</th>
+                                        <th>Platform(s)</th>
+                                        <th>Engine version</th>
+                                        <th>CSS grade</th>
+                                    </tr>
+                                </tfoot>
+    -->
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div>
+            </div>
+
+        </section><!-- /.content -->
+
+    </aside><!-- /.right-side -->
+
+	<!-- DATA TABES SCRIPT -->
+    <script src="js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+    <!-- echarts精简版 -->
+    <script src="js/echarts.min.js"></script>
+    <script src="js/wi_echartstheme.js"></script>
+    <!-- page script -->
+    <script type="text/javascript">
+        $(function() {
+            $("#example1").dataTable({
+                "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 6 ] }],//对操作列不进行排序
+                "bPaginate": true,//分页开关
+                "bLengthChange": true,//选择条数
+                "bFilter": true,//搜索框
+                "bSort": true,//所有列排序
+                "bInfo": true,//显示数据条数
+                "bAutoWidth": true,
+            });
+            $("#notice").on("hidden.bs.modal", function() {
+                $(this).removeData("bs.modal");
+            });
+            $('#reservation9').daterangepicker({
+                "timePicker": false,
+                "timePicker24Hour": false,
+                "linkedCalendars": false,
+                "autoUpdateInput": false,
+            }, function(start, end) {
+                var time_start=start.format('YYYY/MM/DD');
+                var time_end=end.format('YYYY/MM/DD');
+                var time_label = time_start+' - '+time_end;
+                $('#reservation9').val(time_label);
+            });
+            var myChart1 = echarts.init(document.getElementById('chart_1'),'wi');
+            option1 = {
+                backgroundColor: '#ffffff',
+                title: {
+                    text: 'SEO项目趋势图',
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data:['项目','关键词','竞品'],
+                    right: '20',
+                    width: '200',
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                toolbox: {
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['周一','周二','周三','周四','周五','周六','周日']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [
+                    {
+                        name:'项目',
+                        type:'line',
+                        stack: '项目',
+                        data:[10500, 20320, 20001, 10504, 10900, 30390, 40010]
+                    },
+                    {
+                        name:'关键词',
+                        type:'line',
+                        stack: '关键词',
+                        data:[23050, 23320, 43010, 15540, 19000, 33200, 55100]
+                    },
+                    {
+                        name:'竞品',
+                        type:'line',
+                        stack: '竞品',
+                        data:[10350, 23420, 20120, 21540, 31900, 53300, 41300]
+                    }
+                ]
+            };
+            //使用刚指定的配置项和数据显示图表
+            myChart1.setOption(option1);
+            //自适应屏幕大小
+            $(window).resize(function(){
+                myChart1.resize();
+            });
+            //筛选数据
+            $(".btntab-btn").on("click",function(){
+                var searchval = $(this).attr("value");
+                //alert(searchval);
+                $(this).addClass("active").siblings(".btntab-btn").removeClass("active");
+            });
+        });
+    </script>

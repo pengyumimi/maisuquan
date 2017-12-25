@@ -1,0 +1,119 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" 
+            aria-hidden="true">×
+    </button>
+    <h4 class="modal-title" id="myModalLabel">
+        管理分类
+    </h4>
+</div>
+<div class="modal-body" style="margin-bottom: 30px;">
+   <div class="m_top_20 row">
+        <div class="form-group col-md-6 m_bottom_0">
+            <div class="form-group m_bottom_0">
+                <input type="txt" maxlength="10" class="form-control addfl_inp" id="addfl_inp" value="" placeholder="输入分类名称不超过10个字符" ng-model="name">
+            </div>
+        </div>
+        <div class="form-group col-md-6 m_bottom_0 p_left_0">
+            <div class="form-group m_bottom_0">
+                <button class="btn_main inputrightBtn addnewfl" onclick="glfl_addfl()">新增分类</button>
+            </div>
+        </div>
+    </div>
+   
+    <div class="m_top_20">
+        <div class="glfl_list">
+            <table id="glfl_list">
+               <tr>
+                   <td><input name="glfl_listv" class="readonly" value="通用词" readonly="true" maxlength="10"/></td>
+                   <td>15个关键词</td>
+                   <td><i class="icon-wi-del"></i><i class="icon-wi-del" name="edit" onclick="glfl_editbtn(this)">11</i></td>
+               </tr>
+               <tr>
+                   <td><input name="glfl_listv" class="readonly" value="通用词" readonly="true" maxlength="10"/></td>
+                   <td>15个关键词</td>
+                   <td><i class="icon-wi-del"></i><i class="icon-wi-del" name="edit" onclick="glfl_editbtn(this)">11</i></td>
+               </tr>
+               <tr>
+                   <td><input name="glfl_listv" class="readonly" value="通用词" readonly="true" maxlength="10"/></td>
+                   <td>15个关键词</td>
+                   <td><i class="icon-wi-del"></i><i class="icon-wi-del" name="edit" onclick="glfl_editbtn(this)">11</i></td>
+               </tr>
+               <tr>
+                   <td><input name="glfl_listv" class="readonly" value="通用词" readonly="true" maxlength="10"/></td>
+                   <td>15个关键词</td>
+                   <td><i class="icon-wi-del"></i><i class="icon-wi-del" name="edit" onclick="glfl_editbtn(this)">11</i></td>
+               </tr>
+            </table>
+        </div>
+    </div>
+    
+</div>
+                                                
+<div class="modal-footer text-center">
+    <button type="button" class="btn_main btn_cancel" data-dismiss="modal">取消</button>
+    <button type="button" class="btn_main saveBtn" ng-click="projectsApp.appScope.save_addgjc($event)" onclick="aaa()">保存</button>    
+</div>
+<script>
+   //多选单选按钮初始化
+    function icheckbox_addfl(){
+        var callbacks_list = $('.demo-callbacks ul');
+        $('.glfl_list input').on('ifCreated ifClicked ifChanged ifChecked ifUnchecked ifDisabled ifEnabled ifDestroyed',function(event){
+            callbacks_list.prepend('<li><span>#' + this.id + '</span> is ' + event.type.replace('if', '').toLowerCase() + '</li>');
+            //checkednumf();
+        }).iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%',
+        });
+    };
+    icheckbox_addfl();
+    
+    //验证重复名称的
+    var checkval_ok = false;
+    function glfl_checkval(selecter,new_val){
+        $(selecter).each(function(){
+            var old_val = $(this).val();
+            //console.log(old_val);
+            if (old_val == new_val) { 
+                checkval_ok = false;
+                $('.tip').html("此项已经存在").stop(true,false).fadeIn(0).delay(1000).fadeOut("slow");
+                return checkval_ok;
+            }else{
+                checkval_ok = true;
+                return checkval_ok;
+            }  
+        });
+        return checkval_ok;
+    };
+
+    //新增分类
+    function glfl_addfl(){
+        //获取输入的分类值
+        var input_val = $(".modal-body #addfl_inp").val();
+        //分类值满足要求
+        if(input_val.length>0 && input_val.length<11){
+            //拼写模板
+            var _html = '<tr><td><input name="glfl_listv" class="readonly" value="'+input_val+'" readonly="true" maxlength="10"/></td><td>0个关键词</td><td><i class="icon-wi-del"></i><i class="icon-wi-del" onclick="glfl_editbtn(this)"></i></td></tr>';
+            glfl_checkval("#glfl_list input[name=glfl_listv]",input_val);//验证输入的值是否已经存在
+            //满足情况进行录入
+            if (checkval_ok == true){
+                $(".modal-body #glfl_list").append(_html);
+                $("input[name=zdgjc_list]").not('input[name=zdgjc_list]:checked').iCheck('disable');
+            }
+        }
+    };
+
+    //编辑按钮
+    function glfl_editbtn(obj){
+        //console.log($(this).parents("tr").find("input[name=glfl_listv]"));
+        var selecter = $(obj).parents("tr").find("input[name=glfl_listv]");
+        selecter.attr("readOnly",false);//改为可编辑状态
+        selecter.removeClass("readonly");//改为可编辑样式
+        selecter.blur(function(){
+            selecter.attr("readOnly",true);//改为不可编辑状态
+            selecter.addClass("readonly");//改为不可编辑样式
+        });
+    };
+
+
+</script>

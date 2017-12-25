@@ -1,0 +1,762 @@
+/*
+    Common Class Library
+    此ui库只用于WI公司内部使用，严禁盗版
+    公共ui库class命名规则
+    class属性英文缩写_属性值名称 例如：
+    .c_mfont{
+	   color: #0084ff !important;
+    }
+    c_red,表示color_red,它的值为：red。书写如下
+    .c_red{
+        color: red;
+    }
+    初始化公共样式命名按常规命名，如
+    h1,h2,h3{
+        color: #333;
+        margin: 0;
+        padding: 0.5em 1em;
+    }
+*/
+/* 初始化标签 */
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+img {
+    border: 0;
+}
+
+strong {
+    font-weight: bold;
+}
+
+hr{
+    color:#e6e6e6;
+    height:1px;
+    border:0px;
+    border-top:1px solid #e6e6e6;
+    margin:0px;
+    padding:0px;
+    overflow:hidden;
+}
+
+i,cite{
+    font-style: normal;
+}
+ul,li{
+	list-style: none;
+}
+ol, ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+/* 常用颜色 */
+.f_color{
+    color: #15caba !important;
+}
+.link_a{
+    color: #32a0f6 !important;
+    margin: 0 5px;
+}
+
+.b_color{
+    background-color: #32a0f6 !important;
+}
+
+.c_3{
+    color: #333 !important;
+}
+
+.c_6{
+    color: #666 !important;
+}
+
+.c_9{
+    color: #999 !important;
+}
+
+.c_c{
+    color: #ccc !important;
+}
+
+.c_r{
+    color: #ff6c60 !important;
+}
+
+.c_y{
+    color: #f8ac59 !important;
+}
+
+.c_g{
+    color: #1ab394 !important;
+}
+
+.c_o{
+    color: #E86638 !important;
+}
+
+.b_h{
+    background: #e6e6e6 !important;
+}
+
+.b_b{
+    background: #32a0f6 !important;
+}
+
+.b_r{
+    background: #ff6c60 !important;
+}
+
+.b_y{
+    background: #f8ac59 !important;
+}
+
+.b_g{
+    background: #1ab394 !important;
+}
+
+.b_c{
+    background: #ccc !important;
+}
+.bc_b{
+    background-color: #32a0f6 !important;
+    color: #fff !important;
+}
+
+/* 常用字体比例和边距 */
+.f_reduce{
+    font-size: 0.6em !important;
+}
+
+.f_plus{
+    font-size: 1.6em !important;
+}
+
+.f_14{
+	font-size: 14px;
+}
+
+small {
+    font-size: 80%;
+}
+
+.m_0{
+    margin: 0 !important;
+}
+
+.m_5{
+    margin: 5px;
+}
+
+.m_10{
+    margin: 10px;
+}
+
+.m_15{
+    margin: 15px;
+}
+
+.m_20{
+    margin: 20px;
+}
+.m_30{
+    margin: 30px;
+}
+.p_0{
+    padding: 0;
+}
+
+.p_5{
+    padding: 5px;
+}
+
+.p_10{
+    padding: 10px;
+}
+
+.p_15{
+    padding: 15px;
+}
+
+.p_20{
+    padding: 20px;
+}
+
+.p_b0{
+	padding-bottom: 0 !important;
+}
+
+.mLR_5{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.m_top_0{
+    margin-top: 0px;
+}
+
+.m_top_5{
+    margin-top: 5px;
+}
+
+.m_top_10{
+    margin-top: 10px;
+}
+
+.m_top_15{
+    margin-top: 15px;
+}
+
+.m_top_20{
+    margin-top: 20px;
+}
+
+.m_top_30{
+    margin-top: 30px;
+}
+
+.m_top_40{
+	margin-top: 40px;
+}
+
+.m_right_0{
+    margin-right: 0px;
+}
+
+.m_right_5{
+    margin-right: 5px;
+}
+
+.m_right_10{
+    margin-right: 10px;
+}
+
+.m_right_15{
+    margin-right: 15px;
+}
+
+.m_right_20{
+    margin-right: 20px;
+}
+
+.m_bottom_0{
+    margin-bottom: 0px;
+}
+
+.m_bottom_5{
+    margin-bottom: 5px;
+}
+
+.m_bottom_10{
+    margin-bottom: 10px !important;
+}
+
+.m_bottom_15{
+    margin-bottom: 15px;
+}
+
+.m_bottom_20{
+    margin-bottom: 20px !important;
+}
+
+.m_left_0{
+    margin-left: 0px !important;
+}
+
+.m_left_5{
+    margin-left: 5px;
+}
+
+.m_left_10{
+    margin-left: 10px !important;
+}
+
+.m_left_15{
+    margin-left: 15px;
+}
+
+.m_left_20{
+    margin-left: 20px !important;
+}
+
+.p_left_0{
+    padding-left: 0px !important;
+}
+
+.p_right_0{
+    padding-right: 0px;
+}
+
+.p_left_5{
+    padding-left: 5px;
+}
+
+.p_left_10{
+    padding-left: 10px !important;
+}
+
+.p_right_5{
+    padding-right: 5px;
+}
+
+.b_0{
+    border: 0 !important;
+}
+
+/* 常用控制 */
+/* 超出文本以省略号显示 */
+.ellipsis{
+    overflow: hidden;
+    -ms-text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    word-wrap:normal;
+}
+
+/* 占位隐藏 */
+.v_hidden{
+    visibility:hidden;
+}
+
+/*input和img混合布局时对齐方式*/
+input,img{
+    vertical-align:middle;
+    border:0 none;
+}
+
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
+}
+
+.t_center{
+    text-align: center !important;
+}
+
+.t_left{
+    text-align: left;
+}
+
+.w_p100{
+    width: 100% !important;
+}
+
+.relative{
+    position: relative;
+}
+
+.none{
+    display: none;
+}
+/*placeholder兼容ie10和谷歌等浏览器的样式*/
+::-webkit-input-placeholder { 
+color: #9094a3;font:normal 14px/19px 'Microsoft YaHei'; text-overflow: ellipsis;font-weight: 300; 
+} 
+:-moz-placeholder { 
+color: #9094a3 !important;font-size: 14px !important; text-overflow: ellipsis;font-weight: 300; 
+} 
+::-moz-placeholder { 
+color: #9094a3 !important;font-size: 14px !important; text-overflow: ellipsis;font-weight: 300; 
+} /* for the future */ 
+:-ms-input-placeholder { 
+color: #9094a3 !important;font:normal 14px/16px 'Microsoft YaHei' !important; text-overflow: ellipsis;font-weight: 300; 
+}
+/* 按钮 */
+button{
+    margin: 0 5px;
+    background: #fff;
+    color: #999;
+    font-size: 12px;
+    line-height: 1.5em;
+    border: 1px solid #e6e6e6;
+    padding: 6px 22px;
+    outline: inherit;
+    cursor: pointer;
+}
+
+button:hover{
+    transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+}
+.btn_main{
+    color: #fff;
+    background: #01CDBA;
+    font-size: 14px;
+    padding: 4px 15px;
+    border: 0 none;
+}
+/* 表格 */
+
+table{
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+tr:hover{
+    background: #f7f7f7;
+}
+
+tr:hover .ahover{
+    color: #007CF9!important;
+    text-decoration: underline;
+}
+
+th, td{
+    padding: 1em;
+    border: 1px solid #e6e6e6;
+    word-break: keep-all;
+    white-space:nowrap;
+    cursor: default;
+}
+
+table th {
+    border-bottom: 0;
+    text-align: left;
+    padding: 0.8em 1em;
+    background: #f5f6fa;
+    font-size: 12px;
+    color: #999;
+    border: 0;
+    border-top: 1px solid #e6e6e6;
+    border-left: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    font-weight: 600;
+}
+
+table th:first-child{
+    border-left: 0;
+}
+
+table td{
+    border-right: 0;
+}
+
+table tr td:first-child{
+    border-left: 0;
+}
+
+table tr:first-child td{
+    border-top: 0;
+}
+/* 单行文本 */
+input{
+    color: #999;
+}
+i,em{
+    font-style: normal;
+}
+input,textarea{
+    padding: 4px 10px;
+    line-height: 22px;
+    border: 1px solid #e6e6e6;
+    font-size: 14px;
+    color: #606885;
+    outline: none;
+}
+input:focus,textarea:focus {
+    outline: none;
+    border-color: #32a0f6;
+    transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+}
+b{
+    font-weight: 500;
+}
+input[type="number"]{
+    width: 70px;
+    min-width: 30px;
+    padding: 4px;
+}
+
+input[type=checkbox] {
+    width: 14px;
+    height: 14px;
+    border: 1px solid #FFFFFF;
+    cursor: pointer;
+}
+
+input[type=checkbox]:focus {
+    outline: none;
+    border-color:#4d90fe;
+}
+
+/* 多行文本 */
+textarea{
+    resize: none;
+}
+.txt_normal{
+    width:438px;
+    height: 52px;
+}
+.txt_percent{
+    width: 70%;
+    height: 52px;
+}
+/* /多行文本 */
+
+
+/* 底部浮动按钮 */
+.fixed_bottom{
+    position: fixed;
+    bottom: 0;
+    margin: auto !important;
+    left: 0;
+    right: 0;
+    width: 95%;
+    background-color: rgba(255, 255, 255, 0) !important;
+    z-index: 100;
+}
+
+.fixed_bottom .gray{
+    border: none;
+    background: #ccc;
+}
+
+/* /底部浮动按钮 */
+
+/* 分页样式 */
+.fenye_box{
+    display: block;
+    padding: 15px 25px;
+    background: #f5f6fa;
+    border-bottom: 1px solid #e6e6e6;
+    text-align: right;
+    font-size: 0;
+    margin: 0 25px;
+}
+
+.fenye_box span{
+    margin: 0 2px;
+    font-size: 12px;
+    vertical-align: middle;
+    padding: 0;
+    background: transparent;
+}
+
+.fenye_box .fenye_btn{
+    display: inline-block;
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+    margin: 0 2px;
+    padding: 0;
+    font-size: 16px;
+    text-align: center;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: #e6e6e6;
+    color: #b3b3b3;
+    cursor: pointer;
+}
+
+.fenye_btn span{
+    font-size: 14px;
+}
+
+.fenye_box .active{
+    background: #32a0f6;
+    color: #fff;
+}
+
+.fengye_input {
+    width: 30px;
+    height: 14px;
+    padding: 4px 2px;
+    line-height: 15px;
+    font-size: 12px;
+    text-align: center;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+
+/* /分页样式 */
+
+
+/*css滚动条*/
+.sbar::-webkit-scrollbar-track-piece {
+    background-color: #ededed;
+    margin: -2px;
+}
+
+.sbar::-webkit-scrollbar {
+    width: 4px;/*UI要求统一调整*/
+    height: 4px;
+}
+
+.sbar::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,.2);/*UI要求统一调整*/
+    min-height: 150px;
+    min-width: 150px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+.sbary{
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+.sbarx{
+    overflow-y: hidden !important;
+    overflow-x: auto !important;
+}
+/*/css滚动条*/
+/* 滚动条插件样式 */
+.jspContainer
+{
+	overflow: hidden;
+	position: relative;
+}
+.jspPane
+{
+	position: absolute;
+}
+/*设置滚动条样式*/
+.jspVerticalBar
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 5px;
+	margin-left: -5px;
+	height: 100%;
+}
+.jspHorizontalBar
+{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 5px;
+}
+.jspVerticalBar *,
+.jspHorizontalBar *
+{
+	margin: 0;
+	padding: 0;
+	opacity:inherit;
+	filter:inherit;
+}
+.jspCap
+{
+	display: none;
+}
+.jspHorizontalBar .jspCap
+{
+	float: left;
+}
+.jspTrack
+{
+	background: transparent;
+	position: relative;
+}
+.jspDrag
+{
+	background: #666;
+	position: relative;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;		
+	-ms-border-radius:5px;			
+	-o-border-radius:5px;				
+}
+.jspHorizontalBar .jspTrack,
+.jspHorizontalBar .jspDrag
+{
+	float: left;
+	height: 100%;
+}
+.jspArrow
+{
+	background: #50506d;
+	text-indent: -20000px;
+	display: block;
+	cursor: pointer;
+}
+.jspArrow.jspDisabled
+{
+	cursor: default;
+	background: #80808d;
+}
+.jspVerticalBar .jspArrow
+{
+	height: 16px;
+}
+.jspHorizontalBar .jspArrow
+{
+	width: 16px;
+	float: left;
+	height: 100%;
+}
+.jspVerticalBar .jspArrow:focus
+{
+	outline: none;
+}
+.jspCorner
+{
+	background: #eeeef4;
+	float: left;
+	height: 100%;
+}
+/* /滚动条插件样式 */
+
+
+/*/错误数据提示/*/
+.tabletip_zwsj,.tabletip_dataerror{
+    padding: 20px;
+    font-size: 16px;
+    color: orangered;
+    text-align: center
+}
+.tip{
+	position:fixed;
+	display:none;
+	width:180px;
+	height:80px;
+	background:rgba(0,0,0,.8);
+	color:#fff;font:normal 16px/80px 'Microsoft Yahei';
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	margin:auto;
+	text-align:center;
+	border-radius:5px;
+	z-index:99999;
+}
+
+/*无边框表格*/
+.no-line{
+
+}
+.no-line tr,.no-line td{
+    border: 0 none;
+    padding: 4px 15px;
+    border-right: 1px solid #f5f5f5;
+}
+.no-line tr:hover {
+    background: none;
+}
+.no_background{
+    background: none;
+}
+.no_background th{
+    background: none;
+border: 0 none;
