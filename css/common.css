@@ -400,6 +400,11 @@ table{
     margin: 0;
     border-collapse: collapse;
     background: #fff;
+    border: 1px solid #eee;
+}
+
+td{
+    word-break: break-all;
 }
 
 tr:hover{
@@ -414,8 +419,7 @@ tr:hover .ahover{
 th, td{
     padding: 1em;
     border: 1px solid #e6e6e6;
-    word-break: keep-all;
-    white-space:nowrap;
+    word-break: break-all;
     cursor: default;
 }
 
@@ -760,3 +764,92 @@ textarea{
 .no_background th{
     background: none;
 border: 0 none;
+
+/* 表格 */
+/* wi-table */
+.wi-tablebox{
+    padding:20px 15px;
+    background:#fff;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 14px 8px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+}
+.wi-table tr{
+    border: 0 none;
+}
+.wi-table td,.wi-table th{
+    border: 1px solid #EDECEC;
+    text-align: center;
+}
+.wi-table tr td:first-child ,table th:first-child {
+    border-left: 1px solid #EDECEC;
+}
+.table>thead:first-child>tr:first-child>th{
+    border-top: 1px solid #EDECEC;
+
+}
+.wi-table>thead>tr>th {
+    border-bottom: 0 none;
+    font-weight: 600;
+}
+.wi-table th{
+    font-size: 14px;
+    color: #272731;
+    background: #F5F5F5;
+}
+.wi-table td {
+    font-size: 14px;
+    color: #272731;
+}
+.wi-table>tbody>tr:nth-of-type(odd) {
+    background-color: #fff;
+}
+.wi-table>tbody>tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+}
+.wi-table tbody tr:hover{
+    background-color: #f5f5f5 !important;
+}
+.wi-table a {
+    color: #333 ;
+}
+.wi-table a:focus, .wi-table a:hover, .wi-table tr:hover a {
+    color: #0988F5;
+}
+.data-up{
+    color: #01CDBA ;
+}
+.data-down{
+    color: #DF5158 ;
+}
+.wi-table .icon-wi-data-up,.wi-table .icon-wi-data-down{
+    margin-right: 5px;
+}
+.wi-table-lefthead tr td:first-child{
+    background-color: #F9F9F9 !important;
+}
+.wi-table-lefthead>tbody>tr:nth-of-type(odd) {
+    background-color: #fff;
+}
+.wi-table-lefthead>tbody>tr:nth-of-type(even) {
+    background-color: #fff;
+}
+.wi-table-lefthead tr:hover {
+    background-color: #ffffff !important;
+}
+tbody{
+    border-top: 1px solid #EDECEC;
+}
+/*datatables 样式覆盖*/
+table.dataTable thead{
+    background-color: #F5F5F5;
+}
+.smalltable td{
+}
+.smalltable>tbody>tr>td, .smalltable>tbody>tr>th, .smalltable>tfoot>tr>td, .smalltable>tfoot>tr>th, .smalltable>thead>tr>td, .smalltable>thead>tr>th {
+    padding: 5px;
+}
+/* /表格 */

@@ -1,0 +1,95 @@
+<div ng-controller="msgSendListCtrl">
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>发送列表</h1>
+			<ol class="breadcrumb">
+				<li><a href="index.html"><i class="fa fa-dashboard"></i>首页</a></li>
+				<li>短信推送平台</li>
+				<li class="active"><a href="#">发送列表</a></li>
+			</ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+				
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+
+                        <div class="inputcontent">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6 col-lg-3 m_bottom_10">
+                                    <label class="leftlabel">批次编号:</label>
+                                    <div class="input-group" style="display: block; box-sizing:border-box;width:100%;padding-left:7em">
+                                        <input class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-6 col-lg-3 m_bottom_10">
+                                    <label class="leftlabel">手机号码:</label>
+                                    <div class="input-group" style="display: block; box-sizing:border-box;width:100%;padding-left:7em">
+                                        <input class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-6 col-lg-3 m_bottom_10">
+                                    <label class="leftlabel">短信状态:</label>
+                                    <div class="input-group" style="display: block; box-sizing:border-box;width:100%;padding-left:7em">
+                                        <select class="form-control">
+                                            <option>发送成功</option>
+                                            <option>发送失败</option>
+                                            <option>状态未知</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-6 col-lg-3 m_bottom_10">
+                                    <label class="leftlabel" style="">发送时间区间:</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" class="form-control" id="reservation"/>
+                                    </div><!-- /.input group -->
+                                </div>
+                                <div class="pull-right col-xs-12 col-md-6 col-lg-3 m_bottom_10">
+                                    <a class="btn btn-dropbox pull-right col-xs-12 col-md-6 col-lg-3 m_bottom_10" ng-click="modal_xgtc($event)">查询</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="box-body table-responsive">
+
+                            <table id="example1" class="wi-table">
+                                <thead>
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>批次编号</th>
+                                        <th>手机号码</th>
+                                        <th>发送状态</th>
+                                        <th>发送时间</th>
+                                        <th>接收时间</th>
+                                        <th>短信内容</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="t_center">1</td>
+                                        <td>suoniao130_201706_295</td>
+                                        <td>18612348888</td>
+                                        <td>DELIVRD</td>
+                                        <td>2017-06-25 19:27:08</td>
+                                        <td>2017-06-25 19:36:53</td>
+                                        <td style="width:30%">【雅戈尔】夏季新款特价，原价1260元，现三件仅298元，今晚20:00开抢。点 t.cn/RoRWUW9 抢购买一送二货到付款 .退订TD</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div>
+            </div>
+
+        </section><!-- /.content -->
+
+    </aside><!-- /.right-side -->
+
+</div>

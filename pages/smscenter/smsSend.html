@@ -12,7 +12,7 @@
 
         <!-- Main content -->
         <section class="content">
-
+            <form role="form">
             <div class="row">
                 <!-- left column -->
                 <div class="col-lg-6">
@@ -21,8 +21,6 @@
                         <div class="box-header">
                             <h3 class="box-title">编辑短信</h3>
                         </div><!-- /.box-header -->
-                        <!-- form start -->
-                        <form role="form">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">短信内容<small>（填写内容，不超过70个字符）</small></label><span class="text-danger right">{{placeholder}}</span>
@@ -31,7 +29,6 @@
                                 </div>
 
                             </div><!-- /.box-body -->
-                        </form>
                     </div><!-- /.box -->
 
                     <!-- general form elements -->
@@ -39,8 +36,6 @@
                         <div class="box-header">
                             <h3 class="box-title">选择账号</h3>
                         </div><!-- /.box-header -->
-                        <!-- form start -->
-                        <form role="form">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label>选择账号</label>
@@ -68,7 +63,6 @@
                                 </div>
 
                             </div><!-- /.box-body -->
-                        </form>
                     </div><!-- /.box -->
 
                 </div><!--/.col (left) -->
@@ -79,28 +73,25 @@
                         <div class="box-header">
                             <h3 class="box-title">录入手机号码</h3>
                         </div><!-- /.box-header -->
-                        <!-- form start -->
-                        <form role="form">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="importsms">导入手机号码</label>
-                                    <input type="file" id="importsms">
+                                    <input type="file" id="importsms" ng-src={{files[0].name}} onchange="angular.element(this).scope().checkFile(this)" ng-model="upFile" ng-disabled="disabledFile">
                                     <p class="help-block">格式为（xls/xlsx 或 txt 格式，每行一个手机号码）</p>
                                 </div>
                                 <div class="form-group">
                                     <label for="writesms">输入手机号码<small>（多个手机号码使用半角“,"或换行分割）</small></label>
-                                    <textarea id="writesms" class="form-control" rows="6" placeholder="多个手机号码使用半角,或换行分割"></textarea>
+                                    <textarea id="writesms" class="form-control" rows="6" placeholder="多个手机号码使用半角,或换行分割" ng-model="phoneCont" ng-change="checkPhone()" ng-disabled="writerPhone"></textarea>
                                 </div>
 
                             </div><!-- /.box-body -->
-                        </form>
                     </div><!-- /.box -->
                 </div><!--/.col (left) -->
 
-
             </div>   <!-- /.row -->
+            </form>
             <div class="box-footer">
-                <button type="submit" class="btn btn-primary btn-block">提交</button>
+                <button type="submit" class="btn btn-primary btn-block" ng-disabled="submitBtn">提交</button>
             </div>
         </section><!-- /.content -->
 
