@@ -39,7 +39,7 @@
                             <div class="box-body">
                                 <div class="form-group">
                                     <label>选择账号</label>
-                                    <select class="form-control">
+                                    <select class="form-control" ng-model="selectAccountNumber">
                                         <option>suoniao130</option>
                                         <option>suoniao1</option>
                                         <option>suoniao3</option>
@@ -91,7 +91,7 @@
             </div>   <!-- /.row -->
             </form>
             <div class="box-footer">
-                <button type="submit" class="btn btn-primary btn-block" ng-disabled="submitBtn">提交</button>
+                <button type="submit" class="btn btn-primary btn-block" ng-disabled="submitBtn" ng-click="submitForm()">提交</button>
             </div>
         </section><!-- /.content -->
 

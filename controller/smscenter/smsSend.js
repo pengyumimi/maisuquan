@@ -70,11 +70,11 @@ appModule.controller('msgSendCtrl',['$scope','$http','DTOptionsBuilder','DTColum
      */
     $scope.upsave = function() {
         var fd = new FormData();
-        var obj = document.querySelector('input[type=file]')
+        var obj = document.querySelector('input[type=file]');
         var file = obj.files[0];
         $scope.$apply(function() {
             $scope.writerPhone = false;
-        })
+        });
         if(file){
             console.log(file);
             var filename = file.name;
@@ -116,7 +116,7 @@ appModule.controller('msgSendCtrl',['$scope','$http','DTOptionsBuilder','DTColum
             flag2 = 1;
             $scope.localData();
         }
-    }
+    };
 
     $scope.localData = function (v) {
         console.log($scope.smscont);
@@ -127,6 +127,37 @@ appModule.controller('msgSendCtrl',['$scope','$http','DTOptionsBuilder','DTColum
         }else{
             $scope.submitBtn = true;//改为不可以提交状态
         }
+    };
+
+    //提交事件
+    $scope.submitForm = function (v) {
+        var file = "";
+        var obj = document.querySelector('input[type=file]');
+        file = obj.files[0];
+        var postData = {
+            "content" : $scope.smscont,
+            "type" : 2,
+            "file" : "",
+            "mobileList" : $scope.phoneCont,
+            "account" : $scope.selectAccountNumber,
+            "sendtype" : 1
+        };
+        console.log(postData);
+        /*var fd = new FormData();
+        var file = document.querySelector('input[type=file]').files[0];
+        fd.append('logo', file);*/
+        $http({
+            method:'POST',
+            url:"http://sendsms.lingdonge.com:8082/api/v1/uploadSms",
+            data: postData,
+            headers: {'Content-Type':undefined},
+            transformRequest: angular.identity
+        }).success( function (res) {
+            //上传成功的操作
+            console.log(res);
+            alert("uplaod success");
+        });
+
     }
 
 }]);
