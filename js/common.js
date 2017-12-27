@@ -57,6 +57,7 @@ function dateAfter7Today(dates) {
  */
 function getQueryDates() {
     return {
+        serverTime_todaybengin: moment().format('YYYY-MM-DDT00:00:00+08:00'),//今天的服务器格式数据
         serverTime_today: moment().format('YYYY-MM-DDT23:59:59+08:00'),//今天的服务器格式数据
         serverTime_week: moment().subtract(6, 'd').format('YYYY-MM-DDT00:00:00+08:00'),//按零点查找7天的服务器格式数据
         serverTime_month: moment().subtract(29, 'd').format('YYYY-MM-DDT00:00:00+08:00'),//按零点查找30天的服务器格式数据
@@ -106,31 +107,6 @@ function weeks(){
     return dateArray;
 }
 
-/**
- * 搜索引擎代号
- * @param engineId
- * @returns {*}
- */
-function getEngine(engineId) {
-    var engines = [
-        {"id": 0, "name": "百度", "typename": "百度PC"},
-        {"id": 1, "name": "百度", "typename": "百度移动"},
-        {"id": 2, "name": "搜狗", "typename": "搜狗PC"},
-        {"id": 3, "name": "搜狗", "typename": "搜狗移动"},
-        {"id": 4, "name": "好搜", "typename": "好搜PC"},
-        {"id": 5, "name": "好搜", "typename": "好搜移动"},
-        {"id": 6, "name": "神马", "typename": "神马移动"}
-    ];
-
-    if (engineId) {
-        for (var i = 0; i < engines.length; i++)
-            if (engines[i].id == engineId)
-                return engines[i];
-        return '-';
-    } else {
-        return engines;
-    }
-}
 /**
  * 判断数组是否包含指定的元素
  * @param arr

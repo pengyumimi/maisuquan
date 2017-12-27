@@ -10,8 +10,8 @@ if (!getcookies("accessKeyID") || !getcookies("accessSecurityKey")) {
 
 var token = 'testtoken';//测试token
 
-// var httpsrc = "http://sendsms.frp.lingdonge.com:8080/";// ip 地址
-var httpsrc = "";// ip 地址
+var httpsrc = "http://sendsms.frp.lingdonge.com:8080/";// ip 地址
+// var httpsrc = "";// ip 地址
 
 /**
  * API 服务

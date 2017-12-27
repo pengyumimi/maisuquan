@@ -316,7 +316,7 @@ img {
 /* Change the color of the striped tables */
 .table-striped > tbody > tr:nth-child(odd) > td,
 .table-striped > tbody > tr:nth-child(odd) > th {
-  background-color: #f3f4f5;
+  /*background-color: #f3f4f5;*/
 }
 /* .text-center in tables */
 table.text-center td,
