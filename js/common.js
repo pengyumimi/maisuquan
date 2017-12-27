@@ -61,6 +61,7 @@ function getQueryDates() {
         serverTime_today: moment().format('YYYY-MM-DDT23:59:59+08:00'),//今天的服务器格式数据
         serverTime_week: moment().subtract(6, 'd').format('YYYY-MM-DDT00:00:00+08:00'),//按零点查找7天的服务器格式数据
         serverTime_month: moment().subtract(29, 'd').format('YYYY-MM-DDT00:00:00+08:00'),//按零点查找30天的服务器格式数据
+        time_todaybegin: moment().format('YYYY.MM.DD'),//展示今天数据
         time_today: moment().format('YYYY.MM.DD'),//展示今天数据
         time_week: moment().subtract(6, 'd').format('YYYY.MM.DD'),//展示7天数据
         time_month: moment().subtract(29, 'd').format('YYYY.MM.DD'),//展示30天数据

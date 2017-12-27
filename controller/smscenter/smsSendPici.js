@@ -3,8 +3,9 @@
  */
 appModule.controller('msgSendPiciCtrl',['$scope','$http','DTOptionsBuilder','DTColumnDefBuilder', 'apiService',function($scope,$http, DTOptionsBuilder, DTColumnDefBuilder, apiService){
 
+    var timeTable;
 //时间控件初始化
-    $('#reservation').daterangepicker({
+    $('#date_picker').daterangepicker({
         //"singleDatePicker": true,
         // "autoApply": true,
         "timePicker": false,
@@ -16,28 +17,34 @@ appModule.controller('msgSendPiciCtrl',['$scope','$http','DTOptionsBuilder','DTC
         var time_start=start.format('YYYY/MM/DD');
         var time_end=end.format('YYYY/MM/DD');
         var time_label = time_start+' - '+time_end;
-        $('#reservation').val(time_label);
+        $('#date_picker').val(time_label);
+        timeTable = {
+            "startTime": start.format('YYYY-MM-DDT00:00:00+08:00'),
+            "endTime": end.format('YYYY-MM-DDT23:59:59+08:00')
+        };
     });
 
-    $scope.piciNo;
-    $scope.smsCont;
-    $scope.timeE;
+    $scope.piciNo = "";
+    $scope.smsCont = "";
     $scope.datatablesApi;
 
     var defaultDates = getQueryDates();//加载常用的一些时间进来
     // 初始化一个全局时间表,用于查询的时候取值，写到全局是因为所有的查询必定是先日期选中，才能继续查
-    var timeTable = { // 默认使用7天的日期数据
+    timeTable = { // 默认使用7天的日期数据
         'startTime': defaultDates.serverTime_todaybengin,
         'endTime': defaultDates.serverTime_today
     };
-    $('#date_picker').val(defaultDates.time_today);//设置默认时间为当天
+    // $('#date_picker').val(defaultDates.serverTime_today);//设置默认时间为当天
+    $('#date_picker').val(defaultDates.time_todaybegin + ' - ' + defaultDates.time_today);//设置默认时间为当天
 
+    //搜索按钮
     $scope.searchBtn = function (e) {
         console.log($scope.piciNo);
         console.log($scope.smsCont);
-        console.log($scope.timeE);
-        if($scope.timeE){
-            var postData = {"batchName": $scope.piciNo, "smsContent": $scope.smscont, "startTime": "2017-12-16", "endTime": "2017-12-27", "page": 1};
+        var dataSection = $('#date_picker').val();
+        console.log(dataSection);
+        if(dataSection){
+            var postData = {"batchName": $scope.piciNo, "smsContent": $scope.smsCont, "startTime": timeTable.startTime, "endTime": timeTable.endTime, "page": 1};
             $scope.datatablesApi(postData);
         }else{
             $('.tip').html("至少得选个日期吧?").stop(true, false).fadeIn(0).delay(1000).fadeOut("slow");
@@ -46,18 +53,21 @@ appModule.controller('msgSendPiciCtrl',['$scope','$http','DTOptionsBuilder','DTC
 
     }
 
+    // 接口
     $scope.datatablesApi = function(postData){
+        var postDataFinal;
         if(postData){
-            postData = postData;
+            var postDataFinal = postData;
         }else{
-            var postData = {"batchName": "", "smsContent": "", "startTime": timeTable.startTime, "endTime": timeTable.endTime, "page": 1};
+            //默认传当天的空内容
+            postDataFinal = {"batchName": "", "smsContent": "", "startTime": timeTable.startTime, "endTime": timeTable.endTime, "page": 1};
         }
 
         // var _url = "ajax/pici.json"; //api/v1/getBatchReport
         var _url = "api/v1/getBatchReport"; //api/v1/getBatchReport
 
-        console.log(postData);
-        apiService.queryAPI(_url, postData, function (res) {
+        console.log(postDataFinal);
+        apiService.queryAPI(_url, postDataFinal, function (res) {
             if (res) {
                 console.log(res);
                 var dataList = res.data.result;
