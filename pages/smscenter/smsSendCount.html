@@ -21,21 +21,21 @@
                             <div class="row">
                                 <div class="col-xs-12 col-md-8 col-lg-5 m_bottom_10">
                                     <label class="leftlabel" style="">发送时间区间:</label>
-                                    <div class="input-group">
+                                    <div class="input-group date_picker">
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
-                                        <input type="text" class="form-control" id="reservation"/>
+                                        <input type="text" class="form-control" id="date_picker"/>
                                     </div><!-- /.input group -->
                                 </div>
                                 <div class="pull-right col-xs-12 col-md-4 col-lg-3 m_bottom_10">
-                                    <a class="btn btn-dropbox pull-right col-xs-12 col-md-6 col-lg-3 m_bottom_10" ng-click="modal_xgtc($event)">查询</a>
+                                    <a class="btn btn-dropbox pull-right col-xs-12 col-md-6 col-lg-3 m_bottom_10" ng-click="searchBtn($event)">查询</a>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="box-body table-responsive">
-                            <table id="example1" class="wi-table">
+                            <table id="smsSendInfoTable" class="wi-table">
                                 <thead>
                                 <tr>
                                     <th>时间</th>
@@ -46,20 +46,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>2017-06-25 至 2017-06-28</td>
-                                    <td>208065</td>
-                                    <td>179843</td>
-                                    <td>15959</td>
-                                    <td>12263</td>
-                                </tr>
                                 </tbody>
                             </table>
 
                             </br>
                             </br>
 
-                            <table id="example1" class="wi-table">
+                            <table id="smsSendCountTable" class="wi-table">
                                 <thead>
                                     <tr>
                                         <th>序号</th>

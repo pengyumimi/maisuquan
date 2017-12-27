@@ -22,19 +22,19 @@
                                 <div class="col-xs-12 col-md-6 col-lg-3 m_bottom_10">
                                     <label class="leftlabel">批次编号:</label>
                                     <div class="input-group" style="display: block; box-sizing:border-box;width:100%;padding-left:7em">
-                                        <input class="form-control" />
+                                        <input class="form-control" ng-model="batchName"/>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-md-6 col-lg-3 m_bottom_10">
                                     <label class="leftlabel">手机号码:</label>
                                     <div class="input-group" style="display: block; box-sizing:border-box;width:100%;padding-left:7em">
-                                        <input class="form-control" />
+                                        <input class="form-control" ng-model="mobile"/>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-md-6 col-lg-3 m_bottom_10">
                                     <label class="leftlabel">短信状态:</label>
                                     <div class="input-group" style="display: block; box-sizing:border-box;width:100%;padding-left:7em">
-                                        <select class="form-control">
+                                        <select class="form-control" ng-model="deliverStatus">
                                             <option>发送成功</option>
                                             <option>发送失败</option>
                                             <option>状态未知</option>
@@ -43,22 +43,22 @@
                                 </div>
                                 <div class="col-xs-12 col-md-6 col-lg-3 m_bottom_10">
                                     <label class="leftlabel" style="">发送时间区间:</label>
-                                    <div class="input-group">
+                                    <div class="input-group date_picker">
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
-                                        <input type="text" class="form-control" id="reservation"/>
+                                        <input type="text" class="form-control" id="date_picker"/>
                                     </div><!-- /.input group -->
                                 </div>
                                 <div class="pull-right col-xs-12 col-md-6 col-lg-3 m_bottom_10">
-                                    <a class="btn btn-dropbox pull-right col-xs-12 col-md-6 col-lg-3 m_bottom_10" ng-click="modal_xgtc($event)">查询</a>
+                                    <a class="btn btn-dropbox pull-right col-xs-12 col-md-6 col-lg-3 m_bottom_10"  ng-click="searchBtn($event)">查询</a>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="box-body table-responsive">
 
-                            <table id="example1" class="wi-table">
+                            <table id="smsSendListTable" class="wi-table">
                                 <thead>
                                     <tr>
                                         <th>序号</th>
@@ -71,18 +71,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="t_center">1</td>
-                                        <td>suoniao130_201706_295</td>
-                                        <td>18612348888</td>
-                                        <td>DELIVRD</td>
-                                        <td>2017-06-25 19:27:08</td>
-                                        <td>2017-06-25 19:36:53</td>
-                                        <td style="width:30%">【雅戈尔】夏季新款特价，原价1260元，现三件仅298元，今晚20:00开抢。点 t.cn/RoRWUW9 抢购买一送二货到付款 .退订TD</td>
-                                    </tr>
 
                                 </tbody>
                             </table>
+                            <div class="spinner tableSpinner">
+                                <div class="bounce1"></div>
+                                <div class="bounce2"></div>
+                                <div class="bounce3"></div>
+                            </div>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->
                 </div>

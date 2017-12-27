@@ -3,8 +3,8 @@
  */
 appModule.controller('msgSendPiciCtrl',['$scope','$http','DTOptionsBuilder','DTColumnDefBuilder', 'apiService',function($scope,$http, DTOptionsBuilder, DTColumnDefBuilder, apiService){
 
-    var timeTable;
-//时间控件初始化
+    var timeTable = {};
+    //时间控件初始化
     $('#date_picker').daterangepicker({
         //"singleDatePicker": true,
         // "autoApply": true,
@@ -49,15 +49,14 @@ appModule.controller('msgSendPiciCtrl',['$scope','$http','DTOptionsBuilder','DTC
         }else{
             $('.tip').html("至少得选个日期吧?").stop(true, false).fadeIn(0).delay(1000).fadeOut("slow");
         }
-        return;
-
-    }
+        return false;
+    };
 
     // 接口
     $scope.datatablesApi = function(postData){
-        var postDataFinal;
+        var postDataFinal = "";
         if(postData){
-            var postDataFinal = postData;
+            postDataFinal = postData;
         }else{
             //默认传当天的空内容
             postDataFinal = {"batchName": "", "smsContent": "", "startTime": timeTable.startTime, "endTime": timeTable.endTime, "page": 1};
@@ -92,7 +91,7 @@ appModule.controller('msgSendPiciCtrl',['$scope','$http','DTOptionsBuilder','DTC
             "data": listDatas,
             "columns": [
                 {data: null},
-                {data: 'longId'},
+                {data: 'batchName'},
                 {data: 'msgContent'},
                 {data: 'createdAt'},
                 {data: 'sendSchedule'},
