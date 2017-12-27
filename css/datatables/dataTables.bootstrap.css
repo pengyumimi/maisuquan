@@ -18,7 +18,7 @@ div.dataTables_length select {
 }
 
 .table-responsive{
-	border-top: 1px solid #ccc;
+	/*border-top: 1px solid #ccc;*/
 }
 
 .table-t-r{
@@ -43,10 +43,18 @@ div.dataTables_filter label {
 }
 
 div.dataTables_filter input {
-    width: 16em;
-    padding: 4px 8px;
-    border-radius: 2px;
-    border: 1px solid #ccc;
+	width: 16em;
+	padding: 2px 8px;
+	border-radius: 2px;
+	border: 1px solid #ccc;
+	height: 30px;
+}
+div.dataTables_filter input:focus {
+	border-color: #15caba !important;
+	background-color: #fff !important;
+	outline: 0;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
 }
 
 div.dataTables_info {
@@ -170,7 +178,7 @@ div.DTTT .btn:hover {
 }
 
 ul.DTTT_dropdown.dropdown-menu {
-  z-index: 2003;
+	z-index: 2003;
 }
 
 ul.DTTT_dropdown.dropdown-menu a {
@@ -187,7 +195,7 @@ ul.DTTT_dropdown.dropdown-menu li:hover a {
 }
 
 div.DTTT_collection_background {
-	z-index: 2002;	
+	z-index: 2002;
 }
 
 /* TableTools information display */
@@ -219,40 +227,40 @@ div.DTFC_LeftFootWrapper table,
 div.DTFC_RightHeadWrapper table,
 div.DTFC_RightFootWrapper table,
 table.DTFC_Cloned tr.even {
-    background-color: white;
+	background-color: white;
 }
- 
+
 div.DTFC_RightHeadWrapper table ,
 div.DTFC_LeftHeadWrapper table {
-    margin-bottom: 0 !important;
-    border-top-right-radius: 0 !important;
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
+	margin-bottom: 0 !important;
+	border-top-right-radius: 0 !important;
+	border-bottom-left-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
 }
- 
+
 div.DTFC_RightHeadWrapper table thead tr:last-child th:first-child,
 div.DTFC_RightHeadWrapper table thead tr:last-child td:first-child,
 div.DTFC_LeftHeadWrapper table thead tr:last-child th:first-child,
 div.DTFC_LeftHeadWrapper table thead tr:last-child td:first-child {
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
+	border-bottom-left-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
 }
- 
+
 div.DTFC_RightBodyWrapper table,
 div.DTFC_LeftBodyWrapper table {
-    border-top: none;
-    margin-bottom: 0 !important;
+	border-top: none;
+	margin-bottom: 0 !important;
 }
- 
+
 div.DTFC_RightBodyWrapper tbody tr:first-child th,
 div.DTFC_RightBodyWrapper tbody tr:first-child td,
 div.DTFC_LeftBodyWrapper tbody tr:first-child th,
 div.DTFC_LeftBodyWrapper tbody tr:first-child td {
-    border-top: none;
+	border-top: none;
 }
- 
+
 div.DTFC_RightFootWrapper table,
 div.DTFC_LeftFootWrapper table {
-    border-top: none;
+	border-top: none;
 }
 

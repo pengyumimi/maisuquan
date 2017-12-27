@@ -1,0 +1,27 @@
+{
+  "code": 0,
+  "message": "请求成功",
+  "result": [
+    {
+      "id": "1",
+      "longId": "123242343",
+      "batchName": "批次名称",
+      "msgContent": "短信内容",
+      "createdAt": "提交时间",
+      "sendSchedule": "定时发送时间，如果不是定时就是提交那一刻时间",
+      "batchStatus": 2,
+      "batchSize": "提交总量",
+      "sendCount": "已发送数"
+    },{
+      "id": "1",
+      "longId": "21222233",
+      "batchName": "双十一的批量发送",
+      "msgContent": "[优惠],感谢新老客户的活动正式开启,我们现在有一个问题.",
+      "createdAt": "2017-11-11 09:00:00",
+      "sendSchedule": "2017-11-11 10:00:00",
+      "batchStatus": 1,
+      "batchSize": "500000",
+      "sendCount": "500000"
+    }
+  ]
+}

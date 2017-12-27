@@ -1,21 +1,21 @@
 /* Set the defaults for DataTables initialisation */
 /*$.extend( true, $.fn.dataTable.defaults, {
-	"sDom":
-		"<'row'<'col-xs-6'l><'col-xs-6'f>r>"+
-		"t"+
-		"<'row'<'col-xs-6'i><'col-xs-6'p>>",
-	"oLanguage": {
-		"sLengthMenu": "_MENU_ 条"
-	}
-} );*/
+ "sDom":
+ "<'row'<'col-xs-6'l><'col-xs-6'f>r>"+
+ "t"+
+ "<'row'<'col-xs-6'i><'col-xs-6'p>>",
+ "oLanguage": {
+ "sLengthMenu": "_MENU_ 条"
+ }
+ } );*/
 
 $.extend( true, $.fn.dataTable.defaults, {
 	"sDom":
-		"<'row'<'col-xs-6'f>r>"+
-		"t"+
-		"<'row'<'col-xs-6 tableselect'l i><'col-xs-6'p>>",
+	"<'row'<'col-xs-6'f>r>"+
+	"t"+
+	"<'row'<'col-xs-6 tableselect'l i><'col-xs-6'p>>",
 	"oLanguage": {
-		"sLengthMenu": "_MENU_ 条"
+		"sLengthMenu": "每页 _MENU_ 条"
 	}
 } );
 
@@ -64,25 +64,25 @@ if ( $.fn.dataTable.Api ) {
 						case 'first':
 							btnDisplay = lang.sFirst;
 							btnClass = button + (page > 0 ?
-								'' : ' disabled');
+									'' : ' disabled');
 							break;
 
 						case 'previous':
 							btnDisplay = lang.sPrevious;
 							btnClass = button + (page > 0 ?
-								'' : ' disabled');
+									'' : ' disabled');
 							break;
 
 						case 'next':
 							btnDisplay = lang.sNext;
 							btnClass = button + (page < pages-1 ?
-								'' : ' disabled');
+									'' : ' disabled');
 							break;
 
 						case 'last':
 							btnDisplay = lang.sLast;
 							btnClass = button + (page < pages-1 ?
-								'' : ' disabled');
+									'' : ' disabled');
 							break;
 
 						default:
@@ -94,13 +94,13 @@ if ( $.fn.dataTable.Api ) {
 
 					if ( btnDisplay ) {
 						node = $('<li>', {
-								'class': classes.sPageButton+' '+btnClass,
-								'aria-controls': settings.sTableId,
-								'tabindex': settings.iTabIndex,
-								'id': idx === 0 && typeof button === 'string' ?
-									settings.sTableId +'_'+ button :
-									null
-							} )
+							'class': classes.sPageButton+' '+btnClass,
+							'aria-controls': settings.sTableId,
+							'tabindex': settings.iTabIndex,
+							'id': idx === 0 && typeof button === 'string' ?
+							settings.sTableId +'_'+ button :
+								null
+						} )
 							.append( $('<a>', {
 									'href': '#'
 								} )
@@ -156,8 +156,8 @@ else {
 
 				$(nPaging).append(
 					'<ul class="pagination">'+
-						'<li class="prev disabled"><a href="#">&larr; '+oLang.sPrevious+'</a></li>'+
-						'<li class="next disabled"><a href="#">'+oLang.sNext+' &rarr; </a></li>'+
+					'<li class="prev disabled"><a href="#">&larr; '+oLang.sPrevious+'</a></li>'+
+					'<li class="next disabled"><a href="#">'+oLang.sNext+' &rarr; </a></li>'+
 					'</ul>'
 				);
 				var els = $('a', nPaging);
