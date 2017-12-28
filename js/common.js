@@ -247,13 +247,13 @@ function getDefaultTableOption(defaultOptions) {
 
     var options = {
         // "aoColumnDefs": [{"bSortable": false, "aTargets": [7]}],//对操作列不进行排序
-        "bPaginate": true,//分页开关
+        "bPaginate": false,//分页开关
         // "pagingType": "full_numbers",
         // "sPaginationType": "full_numbers",
-        "bLengthChange": true,//选择条数
+        "bLengthChange": false,//选择条数
         "bFilter": true,//搜索框
         "bSort": true,//所有列排序
-        "bInfo": true,//显示数据条数
+        "bInfo": false,//显示数据条数
         "bAutoWidth": true,//自动宽度
         // "retrieve": true,//保证只有一个table实例
         "destroy": true,//datatables 必须在执行前进行销毁（销毁实例），否则无法绑定二次数据（推荐使用这个方法）
@@ -360,7 +360,26 @@ function loadingAnimation(obj,show,hide) {
 //         });
 // }
 
-
+//动态分页--创建保存页码数组的函数
+function setPage(length, amount, num, first) {//创建保存页码数组的函数
+    //length数据总条数
+    //amount每页数据条数
+    //num保留的页码数
+    //first第一页的页码
+    var pages = []; //创建分页数组
+    var page = Math.ceil(length / amount);
+    if (page <= num) {
+        for (var i = 1; i <= page; i++) {
+            pages.push(i);
+        }
+    }
+    if (page > num) {
+        for (var i = first; i < first + num; i++) {
+            pages.push(i);
+        }
+    }
+    return pages;
+}
 
 
 

@@ -69,6 +69,10 @@ appModule.controller('msgSendPiciCtrl',['$scope','$http','DTOptionsBuilder','DTC
         apiService.queryAPI(_url, postDataFinal, function (res) {
             if (res) {
                 console.log(res);
+                if(res.data.meta.pageCurrent == 1)  {
+                    localStorage.setItem('pagetotal', res.data.meta.totalCount);
+                }
+
                 var dataList = res.data.result;
                 $scope.datatablesMedia(dataList);
             }else{
@@ -80,6 +84,70 @@ appModule.controller('msgSendPiciCtrl',['$scope','$http','DTOptionsBuilder','DTC
     };
 
     $scope.datatablesApi();
+
+    //动态分页--创建保存页码数组的函数
+    function setPage(length, amount, num, first) {//创建保存页码数组的函数
+        //length数据总条数
+        //amount每页数据条数
+        //num保留的页码数
+        //first第一页的页码
+        var pages = []; //创建分页数组
+        var page = Math.ceil(length / amount);
+        if (page <= num) {
+            for (var i = 1; i <= page; i++) {
+                pages.push(i);
+            }
+        }
+        if (page > num) {
+            for (var i = first; i < first + num; i++) {
+                pages.push(i);
+            }
+        }
+        return pages;
+    }
+
+    //先取到接口返回的总条数，以便创建分页
+    function fenyecont(fenyecont) {
+        $scope.fenyecont = fenyecont;
+        //动态分页--对你没看错，这里仅仅为了取一个总条数来创建分页！！！
+        //设置分页的参数
+        $scope.firstPage = 1;
+        $scope.pageNum = 5;
+        $scope.page = 1;
+        var amount = $scope.fenyecont;//数据总条数
+        var each = 10;//每页显示的条数
+        $scope.each = 10;//每页显示的条数
+        $scope.sub = function (page) {
+            // alert(page);
+            // console.log(page);
+            //getLinkInfo("", pid, page, each);//传到API页面,默认只读取10条
+
+            // var postData = {"batchName": $scope.piciNo, "smsContent": $scope.smsCont, "startTime": timeTable.startTime, "endTime": timeTable.endTime, "page": page};
+            // $scope.datatablesApi(postData);
+            $scope.fenyeM(page, 9);
+            $scope.lastPage = Math.ceil(amount / each);
+            if (page >= $scope.pageNum) {
+                $scope.firstPage = page - Math.floor($scope.pageNum / 2);
+            } else {
+                $scope.firstPage = 1;
+            }
+            if ($scope.firstPage > $scope.lastPage - $scope.pageNum) {
+                $scope.firstPage = $scope.lastPage - $scope.pageNum + 1;
+            }
+            $scope.pages = setPage(amount, each, $scope.pageNum, $scope.firstPage);
+            $scope.page = page;
+        };
+        $scope.sub(1);//默认选中第一页
+        //构建分页结束
+    }
+    $scope.fenyeM = function (page,type,fenyecont) {
+         if(type == 9){
+             var postData = {"batchName": $scope.piciNo, "smsContent": $scope.smsCont, "startTime": timeTable.startTime, "endTime": timeTable.endTime, "page": page};
+             $scope.datatablesApi(postData);
+         }
+    }
+
+    fenyecont(localStorage.getItem("pagetotal"));
 
 
     // datatable数据渲染

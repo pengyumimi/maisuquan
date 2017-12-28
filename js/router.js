@@ -18,7 +18,10 @@ appModule.config(['$stateProvider','$urlRouterProvider','$controllerProvider','$
             resolve: {
                 deps: ['uiLoad',
                     function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(['controller/smscenter/smsSend.js?ver=' + new Date().getTime()]);
+                        return $ocLazyLoad.load([
+                            'controller/smscenter/smsSend.js?ver=' + new Date().getTime(),
+                            'js/jquery/jquery.form.min.js?ver=' + new Date().getTime()
+                        ]);
                     }]
             }
         })

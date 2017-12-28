@@ -12,87 +12,90 @@
 
         <!-- Main content -->
         <section class="content">
-            <form role="form">
-            <div class="row">
-                <!-- left column -->
-                <div class="col-lg-6">
-                    <!-- general form elements -->
-                    <div class="box box-primary">
-                        <div class="box-header">
-                            <h3 class="box-title">编辑短信</h3>
-                        </div><!-- /.box-header -->
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">短信内容<small>（填写内容，不超过70个字符）</small></label><span class="text-danger right">{{placeholder}}</span>
-                                    <textarea id="exampleInputEmail1" class="form-control" rows="4" placeholder="（填写内容，不超过70个字符）" ng-model="smscont" ng-change="checkText()"></textarea>
-                                    <p class="help-block">短信长度为{{smscontnum}}个字，内容开头请时候【XX】格式签名。</p>
-                                </div>
-
-                            </div><!-- /.box-body -->
-                    </div><!-- /.box -->
-
-                    <!-- general form elements -->
-                    <div class="box box-warning">
-                        <div class="box-header">
-                            <h3 class="box-title">选择账号</h3>
-                        </div><!-- /.box-header -->
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <label>选择账号</label>
-                                    <select class="form-control" ng-model="selectAccountNumber">
-                                        <option>suoniao130</option>
-                                        <option>suoniao1</option>
-                                        <option>suoniao3</option>
-                                    </select>
-                                </div>
-                                <div class="checkbox">
-                                    <div class="buttab">
-                                        <!--<span value="1" class="btntab-btn tjsjitem active" ng-class="{1: 'active', 2: 'inactive'}[sendTimeType]" ng-click="sendTime(1)">立即发送</span>
-                                        <span value="2" class="btntab-btn tjsjitem" ng-class="{1: 'inactive', 2: 'active'}[sendTimeType]" ng-click="sendTime(2)">定时发送</span>-->
-                                        <span class="btntab-btn tjsjitem active" ng-class="{true: 'active', false: 'inactive'}[isActive]" ng-click="isActive=true;sendTime(1)">立即发送</span>
-                                        <span class="btntab-btn tjsjitem" ng-class="{true: 'inactive ', false: 'active'}[isActive]" ng-click="isActive=false;sendTime(2)">定时发送</span>
+            <form id="ajaxForm" role="form" method="POST" enctype="multipart/form-data" action="http://sendsms.frp.lingdonge.com:8080/api/v1/uploadSms">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-lg-6">
+                        <!-- general form elements -->
+                        <div class="box box-primary">
+                            <div class="box-header">
+                                <h3 class="box-title">编辑短信</h3>
+                            </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">短信内容<small>（填写内容，不超过70个字符）</small></label><span class="text-danger right">{{placeholder}}</span>
+                                        <textarea id="exampleInputEmail1" name="content" class="form-control" rows="4" placeholder="（填写内容，不超过70个字符）" ng-model="smscont" ng-change="checkText()"></textarea>
+                                        <p class="help-block">短信长度为{{smscontnum}}个字，内容开头请时候【XX】格式签名。</p>
                                     </div>
-                                </div>
-                                <div ng-show="isActive == false">
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
+
+                                </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+
+                        <!-- general form elements -->
+                        <div class="box box-warning">
+                            <div class="box-header">
+                                <h3 class="box-title">选择账号</h3>
+                            </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label>选择账号</label>
+                                        <select  name="account" class="form-control" ng-model="selectAccountNumber" ng-init="selectAccountNumber='suoniao130'">
+                                            <option value="suoniao130">suoniao130</option>
+                                            <option value="suoniao1">suoniao1</option>
+                                            <option value="suoniao3">suoniao3</option>
+                                        </select>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="buttab">
+                                            <!--<span value="1" class="btntab-btn tjsjitem active" ng-class="{1: 'active', 2: 'inactive'}[sendTimeType]" ng-click="sendTime(1)">立即发送</span>
+                                            <span value="2" class="btntab-btn tjsjitem" ng-class="{1: 'inactive', 2: 'active'}[sendTimeType]" ng-click="sendTime(2)">定时发送</span>-->
+                                            <span class="btntab-btn tjsjitem active" ng-class="{true: 'active', false: 'inactive'}[isActive]" ng-click="isActive=true;sendTime(1)">立即发送</span>
+                                            <input name="sendtype" type="hidden" value="1"/>
+                                            <span class="btntab-btn tjsjitem" ng-class="{true: 'inactive ', false: 'active'}[isActive]" ng-click="isActive=false;sendTime(2)">定时发送</span>
                                         </div>
-                                        <input type="text" class="form-control" id="reservation"/>
-                                    </div><!-- /.input group -->
-                                </div>
+                                    </div>
+                                    <div ng-show="isActive == false">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input name="sendtime" type="text" class="form-control" id="date_picker"/>
+                                        </div><!-- /.input group -->
+                                    </div>
 
-                            </div><!-- /.box-body -->
-                    </div><!-- /.box -->
+                                </div><!-- /.box-body -->
+                        </div><!-- /.box -->
 
-                </div><!--/.col (left) -->
+                    </div><!--/.col (left) -->
 
-                <div class="col-lg-6">
-                    <!-- general form elements -->
-                    <div class="box box-success">
-                        <div class="box-header">
-                            <h3 class="box-title">录入手机号码</h3>
-                        </div><!-- /.box-header -->
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <label for="importsms">导入手机号码</label>
-                                    <input type="file" id="importsms" ng-src={{files[0].name}} onchange="angular.element(this).scope().checkFile(this)" ng-model="upFile" ng-disabled="disabledFile">
-                                    <p class="help-block">格式为（xls/xlsx 或 txt 格式，每行一个手机号码）</p>
-                                </div>
-                                <div class="form-group">
-                                    <label for="writesms">输入手机号码<small>（多个手机号码使用半角“,"或换行分割）</small></label>
-                                    <textarea id="writesms" class="form-control" rows="6" placeholder="多个手机号码使用半角,或换行分割" ng-model="phoneCont" ng-change="checkPhone()" ng-disabled="writerPhone"></textarea>
-                                </div>
+                    <div class="col-lg-6">
+                        <!-- general form elements -->
+                        <div class="box box-success">
+                            <div class="box-header">
+                                <h3 class="box-title">录入手机号码</h3>
+                            </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="importsms">导入手机号码</label>
+                                        <input type="file" id="importsms" name="file" ng-src={{files[0].name}} onchange="angular.element(this).scope().checkFile(this)" ng-model="upFile" ng-disabled="disabledFile">
+                                        <p class="help-block">格式为（xls/xlsx 或 txt 格式，每行一个手机号码）</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="writesms">输入手机号码<small>（多个手机号码使用半角“,"或换行分割）</small></label>
+                                        <textarea id="writesms" name="mobileList" class="form-control" rows="6" placeholder="多个手机号码使用半角,或换行分割" ng-model="phoneCont" ng-change="checkPhone()" ng-disabled="writerPhone"></textarea>
+                                    </div>
+                                    <input name="type" type="hidden" value="">
 
-                            </div><!-- /.box-body -->
-                    </div><!-- /.box -->
-                </div><!--/.col (left) -->
+                                </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!--/.col (left) -->
 
-            </div>   <!-- /.row -->
-            </form>
+                </div>   <!-- /.row -->
+
             <div class="box-footer">
-                <button type="submit" class="btn btn-primary btn-block" ng-disabled="submitBtn" ng-click="submitForm()">提交</button>
+                <button id="btnButton" type="submit" class="btn btn-primary btn-block" ng-disabled="submitBtn">提交</button>
             </div>
+            </form>
         </section><!-- /.content -->
 
     </aside><!-- /.right-side -->

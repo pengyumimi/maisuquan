@@ -88,13 +88,13 @@ appModule.controller('msgSendCountCtrl',['$scope','$http','DTOptionsBuilder','DT
             postDataFinal = {"startTime": timeTable.startTime, "endTime": timeTable.endTime, "page": 1};
         }
 
-        // var _url = "ajax/pici.json"; //api/v1/getBatchReport
         var _url = "api/v1/getDailyReportDetail"; //api/v1/getBatchReport
 
         console.log("日报详情API传参");
         console.log(postDataFinal);
         apiService.queryAPI(_url, postDataFinal, function (res) {
             if (res) {
+                console.log("qqqqq");
                 console.log(res);
                 var dataList = res.data.result;
                 $scope.smsSendCountTable(dataList);
@@ -106,7 +106,7 @@ appModule.controller('msgSendCountCtrl',['$scope','$http','DTOptionsBuilder','DT
         });
     };
 
-    // $scope.datatablesCountApi();
+    $scope.datatablesCountApi();
 
     // 日报简介datatable数据渲染
     $scope.smsSendInfoTable = function(listDatas){
@@ -116,6 +116,7 @@ appModule.controller('msgSendCountCtrl',['$scope','$http','DTOptionsBuilder','DT
         var options = getDefaultTableOption({
             "data": listDatas,
             "bPaginate": false,//分页开关
+            "bFilter": false,//搜索开关
             "columns": [
                 {data: 'dates'},
                 {data: 'sendCount'},
@@ -153,11 +154,11 @@ appModule.controller('msgSendCountCtrl',['$scope','$http','DTOptionsBuilder','DT
             "columns": [
                 {data: null},
                 {data: 'batchName'},
+                {data: 'dates'},
                 {data: 'sendCount'},
                 {data: 'successCount'},
                 {data: 'failCount'},
-                {data: 'sendCount'},
-                {data: 'sendCount'}
+                {data: 'unknownCount'}
             ],
             "aoColumnDefs": [
                 {
@@ -167,7 +168,7 @@ appModule.controller('msgSendCountCtrl',['$scope','$http','DTOptionsBuilder','DT
                         return dataListItemsIndex++;//输出序号
                     }
                 },{
-                    "aTargets": [1, 2, 3, 4],
+                    "aTargets": [1, 2, 3, 4, 5, 6],
                     // "searchable": false,   //设置是否参与搜索
                     "mRender": function (data) {
                         if(data){

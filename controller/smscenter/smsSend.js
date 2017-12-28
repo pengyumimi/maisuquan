@@ -3,12 +3,11 @@
  */
 appModule.controller('msgSendCtrl',['$scope','$http','DTOptionsBuilder','DTColumnDefBuilder',function($scope,$http, DTOptionsBuilder, DTColumnDefBuilder){
 
-    $scope.submitBtn = true;//默认不提交
-    var flag1 = 0;
-    var flag2 = 0;
-    var flag3 = 0;
+    $scope.submitBtn = true;//默认不可以提交的状态
+    var flag1 = 0; //编辑短信验证
+    var flag2 = 0; //录入手机号码验证
     //时间控件初始化
-    $('#reservation').daterangepicker({
+    $('#date_picker').daterangepicker({
         "singleDatePicker": true,
         "autoApply": true,
         "timePicker": true, //是否显示小时和分钟
@@ -23,7 +22,7 @@ appModule.controller('msgSendCtrl',['$scope','$http','DTOptionsBuilder','DTColum
         var time_start=start.format('YYYY/MM/DD HH:mm:ss');//带时间的
         // var time_start=start.format('YYYY/MM/DD');
         var time_label = time_start;
-        $('#reservation').val(time_label);
+        $('#date_picker').val(time_label);
     });
 
     // 编辑短信
@@ -51,8 +50,10 @@ appModule.controller('msgSendCtrl',['$scope','$http','DTOptionsBuilder','DTColum
         $scope.sendType = '';
         if(type == 1){
             $scope.sendType = 1;
+            $("input[name='sendtype']").val("1");
         }else if(type == 2){
             $scope.sendType = $('#reservation').val();
+            $("input[name='sendtype']").val("2");
         }
         console.log($scope.sendType);
     }
@@ -60,10 +61,11 @@ appModule.controller('msgSendCtrl',['$scope','$http','DTOptionsBuilder','DTColum
     //录入手机号码
     $scope.phoneCont = "";
     $scope.upFile = "";
-    var keywordsarr = $scope.phoneCont.split(/[,， ]/);
+    var keywordsarr = [];
     //导入手机号
     $scope.checkFile = function () {
         $scope.upsave();
+        $("input[name='type']").val("1");
     }
     /**
      * 文件上传(做文件校验使用)
@@ -107,21 +109,23 @@ appModule.controller('msgSendCtrl',['$scope','$http','DTOptionsBuilder','DTColum
     //手动录入手机号
     $scope.checkPhone = function (v) {
         $scope.disabledFile = true;
+        $("input[name='type']").val("2");
         console.log($scope.disabledFile);
         if($scope.phoneCont.length <= 0){
             $scope.disabledFile = false;
             flag2 = 0;
             $scope.localData();
         }else{
+            keywordsarr = $scope.phoneCont.split(/[,， ]/);
             flag2 = 1;
             $scope.localData();
         }
     };
 
     $scope.localData = function (v) {
-        console.log($scope.smscont);
+        /*console.log($scope.smscont);
         console.log(flag1);
-        console.log(flag2);
+        console.log(flag2);*/
         if(flag1 && flag2){
             $scope.submitBtn = false;//改为可以提交状态
         }else{
@@ -129,11 +133,20 @@ appModule.controller('msgSendCtrl',['$scope','$http','DTOptionsBuilder','DTColum
         }
     };
 
+    $("#btnButton").click(function () {
+        $scope.$emit("BUSY");//显示loading
+        $("#ajaxForm").ajaxSubmit(function () {
+            $('.tip').html("提交成功").stop(true, false).fadeIn(0).delay(1000).fadeOut("slow");
+        });
+        return false;
+    });
+
     //提交事件
     $scope.submitForm = function (v) {
         var file = "";
         var obj = document.querySelector('input[type=file]');
         file = obj.files[0];
+        console.log(file);
         var postData = {
             "content" : $scope.smscont,
             "type" : 2,
@@ -148,10 +161,9 @@ appModule.controller('msgSendCtrl',['$scope','$http','DTOptionsBuilder','DTColum
         fd.append('logo', file);*/
         $http({
             method:'POST',
-            url:"http://sendsms.lingdonge.com:8082/api/v1/uploadSms",
+            url:"http://sendsms.frp.lingdonge.com:8080/api/v1/uploadSms",
             data: postData,
-            headers: {'Content-Type':undefined},
-            transformRequest: angular.identity
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
         }).success( function (res) {
             //上传成功的操作
             console.log(res);
