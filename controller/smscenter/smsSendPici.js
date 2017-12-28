@@ -69,10 +69,10 @@ appModule.controller('msgSendPiciCtrl',['$scope','$http','DTOptionsBuilder','DTC
         apiService.queryAPI(_url, postDataFinal, function (res) {
             if (res) {
                 console.log(res);
+                //暂时将分页总数存到本地
                 if(res.data.meta.pageCurrent == 1)  {
-                    localStorage.setItem('pagetotal', res.data.meta.totalCount);
+                    sessionStorage.setItem('pagetotal', res.data.meta.totalCount);
                 }
-
                 var dataList = res.data.result;
                 $scope.datatablesMedia(dataList);
             }else{
@@ -147,7 +147,7 @@ appModule.controller('msgSendPiciCtrl',['$scope','$http','DTOptionsBuilder','DTC
          }
     }
 
-    fenyecont(localStorage.getItem("pagetotal"));
+    fenyecont(sessionStorage.getItem("pagetotal"));
 
 
     // datatable数据渲染

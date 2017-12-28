@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         
-                        <div class="box-body table-responsive">
+                        <div class="box-body table-responsive" style="overflow:hidden;">
                             <table id="smsSendInfoTable" class="wi-table">
                                 <thead>
                                 <tr>
@@ -67,6 +67,12 @@
                                 <tbody>
                                 </tbody>
                             </table>
+                            <div class="spinner tableSpinner">
+                                <div class="bounce1"></div>
+                                <div class="bounce2"></div>
+                                <div class="bounce3"></div>
+                            </div>
+                            <div ng-include="'pages/include/fenye.html'"></div>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->
                 </div>
