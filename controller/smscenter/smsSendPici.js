@@ -118,12 +118,6 @@ appModule.controller('msgSendPiciCtrl',['$scope','$http','DTOptionsBuilder','DTC
         var each = 10;//每页显示的条数
         $scope.each = 10;//每页显示的条数
         $scope.sub = function (page) {
-            // alert(page);
-            // console.log(page);
-            //getLinkInfo("", pid, page, each);//传到API页面,默认只读取10条
-
-            // var postData = {"batchName": $scope.piciNo, "smsContent": $scope.smsCont, "startTime": timeTable.startTime, "endTime": timeTable.endTime, "page": page};
-            // $scope.datatablesApi(postData);
             $scope.fenyeM(page, 9);
             $scope.lastPage = Math.ceil(amount / each);
             if (page >= $scope.pageNum) {

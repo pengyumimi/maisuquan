@@ -61,10 +61,11 @@ appModule.controller('msgSendCountCtrl',['$scope','$http','DTOptionsBuilder','DT
         // var _url = "ajax/pici.json"; //api/v1/getBatchReport
         var _url = "api/v1/getDailyReport"; //api/v1/getBatchReport
 
-        console.log("日报API传参");
+        console.log("日报简介API传参");
         console.log(postDataFinal);
         apiService.queryAPI(_url, postDataFinal, function (res) {
             if (res) {
+                console.log("日报简介返回值");
                 console.log(res);
                 var dataList = res.data.result;
                 $scope.smsSendInfoTable(dataList);
@@ -94,12 +95,13 @@ appModule.controller('msgSendCountCtrl',['$scope','$http','DTOptionsBuilder','DT
         console.log(postDataFinal);
         apiService.queryAPI(_url, postDataFinal, function (res) {
             if (res) {
-                console.log("qqqqq");
+                console.log("日报详情返回值");
                 console.log(res);
                 //暂时将分页总数存到本地
                 if(res.data.meta.pageCurrent == 1)  {
-                    sessionStorage.setItem('pagetotalConut', res.data.meta.totalCount);
+                    sessionStorage.setItem('pagetotalCount', res.data.meta.totalCount);
                 }
+                // alert(sessionStorage.getItem("pagetotalCount"));
                 var dataList = res.data.result;
                 $scope.smsSendCountTable(dataList);
             }else{
@@ -110,7 +112,7 @@ appModule.controller('msgSendCountCtrl',['$scope','$http','DTOptionsBuilder','DT
         });
     };
 
-    $scope.datatablesCountApi();
+    // $scope.datatablesCountApi();
 
     //动态分页--创建保存页码数组的函数
     function setPage(length, amount, num, first) {//创建保存页码数组的函数
@@ -145,12 +147,6 @@ appModule.controller('msgSendCountCtrl',['$scope','$http','DTOptionsBuilder','DT
         var each = 10;//每页显示的条数
         $scope.each = 10;//每页显示的条数
         $scope.sub = function (page) {
-            // alert(page);
-            // console.log(page);
-            //getLinkInfo("", pid, page, each);//传到API页面,默认只读取10条
-
-            // var postData = {"batchName": $scope.piciNo, "smsContent": $scope.smsCont, "startTime": timeTable.startTime, "endTime": timeTable.endTime, "page": page};
-            // $scope.datatablesApi(postData);
             $scope.fenyeM(page, 9);
             $scope.lastPage = Math.ceil(amount / each);
             if (page >= $scope.pageNum) {
@@ -174,7 +170,7 @@ appModule.controller('msgSendCountCtrl',['$scope','$http','DTOptionsBuilder','DT
         }
     };
 
-    fenyecont(sessionStorage.getItem("pagetotalConut"));
+    fenyecont(sessionStorage.getItem("pagetotalCount"));
 
     // 日报简介datatable数据渲染
     $scope.smsSendInfoTable = function(listDatas){

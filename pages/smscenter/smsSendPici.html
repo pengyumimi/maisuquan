@@ -69,7 +69,44 @@
                                 <div class="bounce3"></div>
                             </div>
 
-                            <div ng-include="'pages/include/fenye.html'"></div>
+                            <div class="col-sm-12">
+                                <!-- 分页控件指令 ，可以是元素 或者 属性 -->
+                                <div class="col-sm-6 text-left">
+                                    每页 {{each}} 条，总条数：{{fenyecont}} 条
+                                </div>
+                                <div class="col-sm-6 text-right">
+                                    <my-pagination page-option="option"></my-pagination>
+                                    <nav aria-label="Page navigation" class="clearfix">
+                                        <ul class="pagination pagination-sm pagination1 fr" style="margin: 0">
+                                            <li ng-class="{disabled:page==1}">
+                                                <a href="javascript:void(0)" aria-label="Previous" ng-click="sub(page-1<1?1:page-1)" ng-disabled="page==1">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                </a>
+                                            </li>
+                                            <li ng-if="page >= pageNum && lastPage !== pageNum" ng-click="sub(1)" ng-class="{active:item==1}">
+                                                <a href="javascript:void(0)">1</a>
+                                            </li>
+                                            <li ng-if="page >= pageNum && lastPage !== pageNum">
+                                                <a href="javascript:void(0)">...</a>
+                                            </li>
+                                            <li ng-click="sub(item)" ng-class="{active:item==page}" ng-repeat="item in pages">
+                                                <a href="javascript:void(0)">{{item}}</a>
+                                            </li>
+                                            <li ng-if="lastPage > pageNum && firstPage <= lastPage - pageNum">
+                                                <a href="javascript:void(0)">...</a>
+                                            </li>
+                                            <li ng-if="lastPage > pageNum && firstPage <= lastPage - pageNum" ng-click="sub(lastPage)" ng-class="{active:item==page}">
+                                                <a href="javascript:void(0)">{{lastPage}}</a>
+                                            </li>
+                                            <li ng-class="{disabled:page==lastPage}">
+                                                <a href="javascript:void(0)" aria-label="Next" ng-click="sub(page+1>lastPage?page:page+1)">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->
                 </div>
