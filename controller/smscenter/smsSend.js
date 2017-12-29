@@ -62,6 +62,7 @@ appModule.controller('msgSendCtrl',['$scope','$http','DTOptionsBuilder','DTColum
     $scope.phoneCont = "";
     $scope.upFile = "";
     var keywordsarr = [];
+
     //导入手机号
     $scope.checkFile = function () {
         $scope.upsave();
@@ -110,13 +111,14 @@ appModule.controller('msgSendCtrl',['$scope','$http','DTOptionsBuilder','DTColum
     $scope.checkPhone = function (v) {
         $scope.disabledFile = true;
         $("input[name='type']").val("2");
-        console.log($scope.disabledFile);
+
         if($scope.phoneCont.length <= 0){
             $scope.disabledFile = false;
             flag2 = 0;
             $scope.localData();
         }else{
             keywordsarr = $scope.phoneCont.split(/[,， ]/);
+            console.log(keywordsarr);
             flag2 = 1;
             $scope.localData();
         }
@@ -134,15 +136,27 @@ appModule.controller('msgSendCtrl',['$scope','$http','DTOptionsBuilder','DTColum
     };
 
     $("#btnButton").click(function () {
-        $scope.$emit("BUSY");//显示loading
+        $(".divNo").show();//提交前显示 loading
+        $scope.submitBtn = true;//提交前改为不可以提交状态
+        //提交form表单
         $("#ajaxForm").ajaxSubmit(function () {
             $('.tip').html("提交成功").stop(true, false).fadeIn(0).delay(1000).fadeOut("slow");
+            $(".divNo").hide();//提交完毕返回成功后隐藏 loading
+            //提交成功后刷新数据,清空input file 和 输入的手机号
+            $scope.$apply(function() {
+                document.querySelector('input[type=file]').value = "";
+                $scope.checkText = "";
+                $scope.writerPhone = false;
+                flag2 = 0;
+                $scope.localData();
+            });
+            // $scope.submitBtn = false;//改为可以提交状态
         });
         return false;
     });
 
-    //提交事件
-    $scope.submitForm = function (v) {
+    //提交事件 ajax提交,暂时不用
+    /*$scope.submitForm = function (v) {
         var file = "";
         var obj = document.querySelector('input[type=file]');
         file = obj.files[0];
@@ -156,9 +170,9 @@ appModule.controller('msgSendCtrl',['$scope','$http','DTOptionsBuilder','DTColum
             "sendtype" : 1
         };
         console.log(postData);
-        /*var fd = new FormData();
+        /!*var fd = new FormData();
         var file = document.querySelector('input[type=file]').files[0];
-        fd.append('logo', file);*/
+        fd.append('logo', file);*!/
         $http({
             method:'POST',
             url:"http://sendsms.frp.lingdonge.com:8080/api/v1/uploadSms",
@@ -170,6 +184,6 @@ appModule.controller('msgSendCtrl',['$scope','$http','DTOptionsBuilder','DTColum
             alert("uplaod success");
         });
 
-    }
+    }*/
 
 }]);

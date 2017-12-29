@@ -3517,6 +3517,34 @@ fieldset[disabled] .btn-vk.active {
 }
 .boxp50 {}
 
+/* 页面加载loading */
+.flyover .mask,.divNo .mask {
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  background: #fff;
+  z-index: 9998;
+}
+.flyover .alert,.divNo .alert{
+  position: fixed;
+  width: 64px;
+  height: 64px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  border: 0;
+  font-size: 0;
+  z-index: 9999;
+  background: transparent url(../img/ajaxloader.gif) center center no-repeat;
+  background-size: 100% 100%;
+}
+/* /页面加载loading */
+
 
 @media (max-width: 1200px) {
     .topnav_box{
