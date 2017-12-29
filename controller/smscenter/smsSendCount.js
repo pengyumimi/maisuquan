@@ -14,13 +14,13 @@ appModule.controller('msgSendCountCtrl',['$scope','$http','DTOptionsBuilder','DT
         "autoUpdateInput": false,
     }, function(start, end) {
         //var time_start=start.format('YYYY/MM/DD HH:mm');//带时间的
-        var time_start=start.format('YYYY/MM/DD');
-        var time_end=end.format('YYYY/MM/DD');
-        var time_label = time_start+' - '+time_end;
+        var time_start=start.format('YYYY-MM-DD');
+        var time_end=end.format('YYYY-MM-DD');
+        var time_label = time_start+' 至 '+time_end;
         $('#date_picker').val(time_label);
         timeTable = {
-            "startTime": start.format('YYYY-MM-DDT00:00:00+08:00'),
-            "endTime": end.format('YYYY-MM-DDT23:59:59+08:00')
+            "startTime": start.format('YYYY-MM-DD'),
+            "endTime": end.format('YYYY-MM-DD')
         };
     });
 
@@ -29,11 +29,11 @@ appModule.controller('msgSendCountCtrl',['$scope','$http','DTOptionsBuilder','DT
     var defaultDates = getQueryDates();//加载常用的一些时间进来
     // 初始化一个全局时间表,用于查询的时候取值，写到全局是因为所有的查询必定是先日期选中，才能继续查
     timeTable = { // 默认使用7天的日期数据
-        'startTime': defaultDates.serverTime_todaybengin,
-        'endTime': defaultDates.serverTime_today
+        'startTime': defaultDates.time_todaybegin,
+        'endTime': defaultDates.time_today
     };
     // $('#date_picker').val(defaultDates.serverTime_today);//设置默认时间为当天
-    $('#date_picker').val(defaultDates.time_todaybegin + ' - ' + defaultDates.time_today);//设置默认时间为当天
+    $('#date_picker').val(defaultDates.time_todaybegin + ' 至 ' + defaultDates.time_today);//设置默认时间为当天
 
     //搜索按钮
     $scope.searchBtn = function (e) {
@@ -98,7 +98,7 @@ appModule.controller('msgSendCountCtrl',['$scope','$http','DTOptionsBuilder','DT
                 console.log("日报详情返回值");
                 console.log(res);
                 //暂时将分页总数存到本地
-                if(res.data.meta.pageCurrent == 1)  {
+                if(res.data.meta.pageCurrent)  {
                     sessionStorage.setItem('pagetotalCount', res.data.meta.totalCount);
                 }
                 // alert(sessionStorage.getItem("pagetotalCount"));
