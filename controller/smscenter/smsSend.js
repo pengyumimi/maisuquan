@@ -140,18 +140,24 @@ appModule.controller('msgSendCtrl',['$scope','$http','DTOptionsBuilder','DTColum
         $scope.submitBtn = true;//提交前改为不可以提交状态
         //提交form表单
         $("#ajaxForm").ajaxSubmit(function (responseText, statusText) {
-            console.log('状态: ' + statusText + '\n 返回的内容是: \n' + responseText);
-            $('.tip').html("提交成功").stop(true, false).fadeIn(0).delay(1000).fadeOut("slow");
-            $(".divNo").hide();//提交完毕返回成功后隐藏 loading
-            //提交成功后刷新数据,清空input file 和 输入的手机号
-            $scope.$apply(function() {
-                document.querySelector('input[type=file]').value = "";
-                $scope.checkText = "";
-                $scope.writerPhone = false;
-                flag2 = 0;
-                $scope.localData();
-            });
-            // $scope.submitBtn = false;//改为可以提交状态
+            console.log(responseText.code);
+            if(responseText.code == 0){
+                $('.tip').html("提交成功").stop(true, false).fadeIn(0).delay(1000).fadeOut("slow");
+                $(".divNo").hide();//提交完毕返回成功后隐藏 loading
+                //提交成功后刷新数据,清空input file 和 输入的手机号
+                $scope.$apply(function() {
+                    document.querySelector('input[type=file]').value = "";
+                    $scope.checkText = "";
+                    $scope.writerPhone = false;
+                    flag2 = 0;
+                    $scope.localData();
+                });
+            }else{
+                $('.tip').html(responseText.msg).stop(true, false).fadeIn(0).delay(1000).fadeOut("slow");
+                $scope.submitBtn = false;//改为可以提交状态
+                $(".divNo").hide();
+            }
+
         });
         return false;
     });
