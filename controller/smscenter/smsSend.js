@@ -16,10 +16,10 @@ appModule.controller('msgSendCtrl',['$scope','$http','DTOptionsBuilder','DTColum
         "linkedCalendars": false,
         "autoUpdateInput": true,
         "locale" : {
-            format: "YYYY/MM/DD HH:mm:ss" //控件中from和to 显示的日期格式
+            format: "YYYY-MM-DD HH:mm:ss" //控件中from和to 显示的日期格式
         }
     }, function(start, end) {
-        var time_start=start.format('YYYY/MM/DD HH:mm:ss');//带时间的
+        var time_start=start.format('YYYY-MM-DD HH:mm:ss');//带时间的
         // var time_start=start.format('YYYY/MM/DD');
         var time_label = time_start;
         $('#date_picker').val(time_label);
@@ -139,7 +139,8 @@ appModule.controller('msgSendCtrl',['$scope','$http','DTOptionsBuilder','DTColum
         $(".divNo").show();//提交前显示 loading
         $scope.submitBtn = true;//提交前改为不可以提交状态
         //提交form表单
-        $("#ajaxForm").ajaxSubmit(function () {
+        $("#ajaxForm").ajaxSubmit(function (responseText, statusText) {
+            console.log('状态: ' + statusText + '\n 返回的内容是: \n' + responseText);
             $('.tip').html("提交成功").stop(true, false).fadeIn(0).delay(1000).fadeOut("slow");
             $(".divNo").hide();//提交完毕返回成功后隐藏 loading
             //提交成功后刷新数据,清空input file 和 输入的手机号

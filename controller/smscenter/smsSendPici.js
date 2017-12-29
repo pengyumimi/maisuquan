@@ -83,7 +83,7 @@ appModule.controller('msgSendPiciCtrl',['$scope','$http','DTOptionsBuilder','DTC
         });
     };
 
-    $scope.datatablesApi();
+    // $scope.datatablesApi();
 
     //动态分页--创建保存页码数组的函数
     function setPage(length, amount, num, first) {//创建保存页码数组的函数
@@ -158,8 +158,8 @@ appModule.controller('msgSendPiciCtrl',['$scope','$http','DTOptionsBuilder','DTC
                 {data: 'createdAt'},
                 {data: 'sendSchedule'},
                 {data: 'batchStatus'},
-                {data: 'batchSize'},
-                {data: 'sendCount'}
+                {data: 'sendCount'},
+                {data: 'successCount'}
             ],
             "aoColumnDefs": [
                 {
@@ -178,7 +178,7 @@ appModule.controller('msgSendPiciCtrl',['$scope','$http','DTOptionsBuilder','DTC
                              return "--"
                          }
                      }
-                 },{
+                },{
                      "aTargets": [-3],
                      // "searchable": false,   //设置是否参与搜索
                      "mRender": function (data) {
@@ -201,8 +201,8 @@ appModule.controller('msgSendPiciCtrl',['$scope','$http','DTOptionsBuilder','DTC
                          }
 
                      }
-                 },{
-                     "aTargets": [-1, -2],
+                },{
+                     "aTargets": [-2],
                      // "searchable": false,   //设置是否参与搜索
                      "mRender": function (data) {
                          if(data){
@@ -211,7 +211,26 @@ appModule.controller('msgSendPiciCtrl',['$scope','$http','DTOptionsBuilder','DTC
                              return "--"
                          }
                      }
-                 }
+                },{
+                     "aTargets": [-1],
+                     // "searchable": false,   //设置是否参与搜索
+                     "mRender": function (data) {
+                         if(data){
+                             return toThousands(data);
+                         }else{
+                             return "--"
+                         }
+                     },
+                     "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                         console.log(oData);
+                         var newData = oData.failCount + sData;
+                         if(newData){
+                             return newData;
+                         }else{
+                             return "--"
+                         }
+                     }
+                }
             ]
         });
 
