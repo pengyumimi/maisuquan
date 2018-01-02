@@ -12,6 +12,9 @@ appModule.controller('msgSendListCtrl',['$scope','$http','DTOptionsBuilder','DTC
         "timePicker24Hour": false,
         "linkedCalendars": false,
         "autoUpdateInput": false,
+        "locale" : {
+            format: "YYYY-MM-DD" //控件中from和to 显示的日期格式
+        }
     }, function(start, end) {
         //var time_start=start.format('YYYY/MM/DD HH:mm');//带时间的
         var time_start=start.format('YYYY-MM-DD');
@@ -26,8 +29,25 @@ appModule.controller('msgSendListCtrl',['$scope','$http','DTOptionsBuilder','DTC
 
     $scope.batchName = "";
     $scope.mobile = "";
-    $scope.deliverStatus = "";
-    $scope.datatablesApi;
+
+    //短信状态选择 select
+    $scope.deliverStatus = {
+        id: 0,
+        value:'全部'
+    };
+    //短信状态数据构造(最后做成动态)
+    $scope.selectmodel = [
+        {
+            id: 1,
+            value:'发送成功'
+        },{
+            id: 2,
+            value:'发送失败'
+        },{
+            id: 3,
+            value:'状态未知'
+        }
+    ];
 
     var defaultDates = getQueryDates();//加载常用的一些时间进来
     // 初始化一个全局时间表,用于查询的时候取值，写到全局是因为所有的查询必定是先日期选中，才能继续查
@@ -42,7 +62,7 @@ appModule.controller('msgSendListCtrl',['$scope','$http','DTOptionsBuilder','DTC
     $scope.searchBtn = function (e) {
         var dataSection = $('#date_picker').val();
         if(dataSection){
-            var postData ={"batchName": $scope.batchName, "mobile": $scope.mobile, "deliverStatus": $scope.deliverStatus, "startTime": timeTable.startTime, "endTime": timeTable.endTime, "page": 1};
+            var postData ={"batchName": $scope.batchName, "mobile": $scope.mobile, "deliverStatus": $scope.deliverStatus.value, "startTime": timeTable.startTime, "endTime": timeTable.endTime, "page": 1};
             $scope.datatablesApi(postData);
         }else{
             $('.tip').html("至少得选个日期吧?").stop(true, false).fadeIn(0).delay(1000).fadeOut("slow");
@@ -57,7 +77,7 @@ appModule.controller('msgSendListCtrl',['$scope','$http','DTOptionsBuilder','DTC
             postDataFinal = postData;
         }else{
             //默认传当天的空内容
-            postDataFinal = {"batchName": "", "mobile": "", "deliverStatus": "", "startTime": timeTable.startTime, "endTime": timeTable.endTime, "page": 1};
+            postDataFinal = {"batchName": "", "mobile": "", "deliverStatus": $scope.deliverStatus.value, "startTime": timeTable.startTime, "endTime": timeTable.endTime, "page": 1};
         }
 
         // var _url = "ajax/pici.json"; //api/v1/getBatchReport
@@ -82,7 +102,7 @@ appModule.controller('msgSendListCtrl',['$scope','$http','DTOptionsBuilder','DTC
         });
     };
 
-    $scope.datatablesApi();
+    // $scope.datatablesApi();
 
     //动态分页--创建保存页码数组的函数
     function setPage(length, amount, num, first) {//创建保存页码数组的函数
@@ -135,13 +155,12 @@ appModule.controller('msgSendListCtrl',['$scope','$http','DTOptionsBuilder','DTC
     }
     $scope.fenyeM = function (page,type,fenyecont) {
         if(type == 9){
-            var postData ={"batchName": $scope.batchName, "mobile": $scope.mobile, "deliverStatus": $scope.deliverStatus, "startTime": timeTable.startTime, "endTime": timeTable.endTime, "page": page};
+            var postData ={"batchName": $scope.batchName, "mobile": $scope.mobile, "deliverStatus": $scope.deliverStatus.value, "startTime": timeTable.startTime, "endTime": timeTable.endTime, "page": page};
             $scope.datatablesApi(postData);
         }
     };
 
     fenyecont(sessionStorage.getItem("pagetotalList"));
-
 
     // datatable数据渲染
     $scope.datatablesMedia = function(listDatas){

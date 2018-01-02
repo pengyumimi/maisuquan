@@ -12,6 +12,9 @@ appModule.controller('msgSendPiciCtrl',['$scope','$http','DTOptionsBuilder','DTC
         "timePicker24Hour": false,
         "linkedCalendars": false,
         "autoUpdateInput": false,
+        "locale" : {
+            format: "YYYY-MM-DD" //控件中from和to 显示的日期格式
+        }
     }, function(start, end) {
         //var time_start=start.format('YYYY/MM/DD HH:mm');//带时间的
         var time_start=start.format('YYYY-MM-DD');
